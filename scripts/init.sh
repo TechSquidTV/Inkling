@@ -88,25 +88,23 @@ else
     SED_INPLACE=(-i)
 fi
 
-# 1. Update go.mod module path
-echo "  → go.mod"
-sed "${SED_INPLACE[@]}" "s|github.com/techsquidtv/inkling|$MODULE_PATH|g" go.mod
+# 1. Update Go module path using Go tooling
+echo "  → go.mod (using go mod edit)"
+go mod edit -module "$MODULE_PATH"
 
-# 2. Update all Go import paths in internal/ and cmd/
-echo "  → Go import paths"
-find internal cmd -type f -name "*.go" -exec sed "${SED_INPLACE[@]}" "s|github.com/techsquidtv/inkling|$MODULE_PATH|g" {} +
-
-# 3. Update Makefile PACKAGE variable
+# 2. Update Makefile PACKAGE variable
 echo "  → Makefile"
 sed "${SED_INPLACE[@]}" "s|github.com/techsquidtv/inkling|$MODULE_PATH|g" Makefile
 
-# 4. Update internal/config/config.go
+# 3. Update internal/config/config.go
 echo "  → internal/config/config.go"
 sed "${SED_INPLACE[@]}" "s|AppName = \"Inkling\"|AppName = \"$PROJECT_NAME\"|g" internal/config/config.go
+sed "${SED_INPLACE[@]}" "s|ServiceName = \"inkling-api\"|ServiceName = \"${PROJECT_NAME_KEBAB}-api\"|g" internal/config/config.go
+sed "${SED_INPLACE[@]}" "s|APITitle = \"Inkling API\"|APITitle = \"$PROJECT_NAME API\"|g" internal/config/config.go
 sed "${SED_INPLACE[@]}" "s|APIKeyPrefix = \"ink_\"|APIKeyPrefix = \"${API_PREFIX}_\"|g" internal/config/config.go
 sed "${SED_INPLACE[@]}" "s|DefaultDBName = \"inkling.db\"|DefaultDBName = \"$DB_NAME\"|g" internal/config/config.go
 
-# 5. Update web/src/constants.ts
+# 4. Update web/src/constants.ts
 echo "  → web/src/constants.ts"
 sed "${SED_INPLACE[@]}" "s|NAME: 'Inkling'|NAME: '$PROJECT_NAME'|g" web/src/constants.ts
 sed "${SED_INPLACE[@]}" "s|ALT: 'Inkling Logo'|ALT: '$PROJECT_NAME Logo'|g" web/src/constants.ts
@@ -117,33 +115,24 @@ else
     sed "${SED_INPLACE[@]}" "s|GITHUB: 'https://github.com/TechSquidTV/inkling'|GITHUB: '#'|g" web/src/constants.ts
 fi
 
-# 6. Update web/package.json
+# 5. Update metadata files
 echo "  → web/package.json"
 sed "${SED_INPLACE[@]}" "s|\"name\": \"inkling\"|\"name\": \"$PROJECT_NAME_KEBAB\"|g" web/package.json
 
-# 7. Update web/index.html
 echo "  → web/index.html"
 sed "${SED_INPLACE[@]}" "s|<title>Inkling</title>|<title>$PROJECT_NAME</title>|g" web/index.html
 
-# 8. Update docker-compose.yml
 echo "  → docker-compose.yml"
 sed "${SED_INPLACE[@]}" "s|inkling:|$PROJECT_NAME_KEBAB:|g" docker-compose.yml
 
-# 9. Update Dockerfile
 echo "  → Dockerfile"
 sed "${SED_INPLACE[@]}" "s|inkling.db|$DB_NAME|g" Dockerfile
 
-# 10. Update .env.example
 echo "  → .env.example"
 sed "${SED_INPLACE[@]}" "s|OTEL_SERVICE_NAME=inkling-api|OTEL_SERVICE_NAME=${PROJECT_NAME_KEBAB}-api|g" .env.example
 
-# 11. Update README.md header
 echo "  → README.md"
 sed "${SED_INPLACE[@]}" "s|# Inkling (Vibe App Template)|# $PROJECT_NAME|g" README.md
-
-# 12. Update telemetry default service name
-echo "  → internal/telemetry/telemetry.go"
-sed "${SED_INPLACE[@]}" "s|cfg.ServiceName = \"inkling-api\"|cfg.ServiceName = \"${PROJECT_NAME_KEBAB}-api\"|g" internal/telemetry/telemetry.go
 
 # Clean up generated files
 echo ""
