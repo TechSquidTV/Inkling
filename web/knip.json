@@ -1,0 +1,27 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "entry": ["src/main.tsx", "src/routes/**/*.tsx"],
+  "project": ["src/**/*.{ts,tsx}"],
+  "ignore": [
+    "src/routeTree.gen.ts",
+    "src/components/ui/sonner.tsx",
+    "src/lib/api-types.ts",
+    "src/components/animate-ui/**/*",
+    "src/components/custom/sidebar.tsx",
+    "src/components/custom/drop-drawer.tsx",
+    "src/components/custom/data-table/schema.ts"
+  ],
+  "paths": {
+    "@/*": ["src/*"]
+  },
+  "ignoreDependencies": [
+    "tailwindcss",
+    "tw-animate-css",
+    "@tanstack/react-router-devtools",
+    "next-themes"
+  ],
+  "ignoreExportsUsedInFile": {
+    "interface": true,
+    "type": true
+  }
+}

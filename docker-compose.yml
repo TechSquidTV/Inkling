@@ -1,0 +1,18 @@
+services:
+  inkling:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data:/app/data
+      # OPTIONAL: Uncomment to enable Docker log streaming
+      # WARNING: This gives the container root access to Docker daemon
+      # - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      - OIDC_ISSUER=${OIDC_ISSUER}
+      - OIDC_CLIENT_ID=${OIDC_CLIENT_ID}
+      - OIDC_CLIENT_SECRET=${OIDC_CLIENT_SECRET}
+      - OIDC_REDIRECT_URL=${OIDC_REDIRECT_URL}
+      # Defaults to 'false' for security. Set to 'true' to enable Docker logs.
+      - ENABLE_DOCKER_LOGS=${ENABLE_DOCKER_LOGS:-false}
+    restart: unless-stopped
