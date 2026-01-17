@@ -33,6 +33,9 @@ When building personal apps, I found myself often wasting a lot of time and toke
 
 ### Installation
 1. **Clone and install dependencies:**
+   ```bash
+   git clone git@github.com:TechSquidTV/Inkling.git
+   cd Inkling
    make install
    ```
 2. **Customize:**
@@ -42,7 +45,7 @@ When building personal apps, I found myself often wasting a lot of time and toke
 3. **Start the development servers:**
    ```bash
    make dev
-   
+   ```
 
 ### Customizing the App
 
