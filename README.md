@@ -2,7 +2,7 @@
 
 The perfect personal software template for your next self-hosted project. A custom Go + React stack built for ease of use and speed.
 
-<img width="2274" height="1408" alt="image" src="https://github.com/user-attachments/assets/b9300603-8917-4f2c-bedc-5c79347cd1e6" />
+https://github.com/user-attachments/assets/6d38dbd3-3f4b-479b-ac71-14d794c9ba20
 
 ## Why does this exist?
 
