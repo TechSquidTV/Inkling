@@ -12,14 +12,16 @@ WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
-RUN go build -o bin/server cmd/server/main.go
+# Copy frontend assets to the location Go expects for embedding
+COPY --from=frontend-builder /app/web/dist ./cmd/server/dist
+RUN CGO_ENABLED=0 go build -o bin/server cmd/server/main.go
 
 # Final Image
 FROM alpine:latest
 WORKDIR /app
-RUN apk add --no-cache ca-certificates sqlite
+RUN apk add --no-cache ca-certificates
+# Only copy the single binary
 COPY --from=backend-builder /app/bin/server .
-COPY --from=frontend-builder /app/web/dist ./web/dist
 
 # Default environment variables
 ENV PORT=8080
@@ -33,4 +35,4 @@ ENV OIDC_REDIRECT_URL=""
 RUN mkdir -p /app/data
 
 EXPOSE 8080
-CMD ["./server", "--p", "8080", "--DBPath", "/app/data/inkling.db"]
+CMD ["./server", "--p", "8080", "--DBPath", "/app/data/app.db"]
