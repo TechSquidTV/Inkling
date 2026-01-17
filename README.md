@@ -33,14 +33,16 @@ When building personal apps, I found myself often wasting a lot of time and toke
 
 ### Installation
 1. **Clone and install dependencies:**
-   ```bash
    make install
    ```
-2. **Start the development servers:**
+2. **Customize:**
+   ```bash
+   make init
+   ```
+3. **Start the development servers:**
    ```bash
    make dev
-   ```
-   *The backend will run on `localhost:8080` (with OpenAPI docs at `/docs`) and the frontend on `localhost:5173`.*
+   
 
 ### Customizing the App
 
