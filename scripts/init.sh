@@ -92,19 +92,23 @@ fi
 echo "  → go.mod (using go mod edit)"
 go mod edit -module "$MODULE_PATH"
 
-# 2. Update Makefile PACKAGE variable
+# 2. Update all Go import paths
+echo "  → Updating Go import paths in all .go files"
+find . -name "*.go" -type f -not -path "./vendor/*" -exec sed "${SED_INPLACE[@]}" "s|github.com/techsquidtv/inkling|$MODULE_PATH|g" {} \;
+
+# 3. Update Makefile PACKAGE variable
 echo "  → Makefile"
 sed "${SED_INPLACE[@]}" "s|github.com/techsquidtv/inkling|$MODULE_PATH|g" Makefile
 
-# 3. Update internal/config/config.go
+# 4. Update internal/config/config.go
 echo "  → internal/config/config.go"
 sed "${SED_INPLACE[@]}" "s|AppName = \"Inkling\"|AppName = \"$PROJECT_NAME\"|g" internal/config/config.go
-sed "${SED_INPLACE[@]}" "s|ServiceName = \"inkling-api\"|ServiceName = \"${PROJECT_NAME_KEBAB}-api\"|g" internal/config/config.go
+sed "${SED_INPLACE[@]}" "s|ServiceName = \"inkling\"|ServiceName = \"${PROJECT_NAME_KEBAB}\"|g" internal/config/config.go
 sed "${SED_INPLACE[@]}" "s|APITitle = \"Inkling API\"|APITitle = \"$PROJECT_NAME API\"|g" internal/config/config.go
 sed "${SED_INPLACE[@]}" "s|APIKeyPrefix = \"ink_\"|APIKeyPrefix = \"${API_PREFIX}_\"|g" internal/config/config.go
 sed "${SED_INPLACE[@]}" "s|DefaultDBName = \"inkling.db\"|DefaultDBName = \"$DB_NAME\"|g" internal/config/config.go
 
-# 4. Update web/src/constants.ts
+# 5. Update web/src/constants.ts
 echo "  → web/src/constants.ts"
 sed "${SED_INPLACE[@]}" "s|NAME: 'Inkling'|NAME: '$PROJECT_NAME'|g" web/src/constants.ts
 sed "${SED_INPLACE[@]}" "s|ALT: 'Inkling Logo'|ALT: '$PROJECT_NAME Logo'|g" web/src/constants.ts
@@ -115,7 +119,7 @@ else
     sed "${SED_INPLACE[@]}" "s|GITHUB: 'https://github.com/TechSquidTV/inkling'|GITHUB: '#'|g" web/src/constants.ts
 fi
 
-# 5. Update metadata files
+# 6. Update metadata files
 echo "  → web/package.json"
 sed "${SED_INPLACE[@]}" "s|\"name\": \"inkling\"|\"name\": \"$PROJECT_NAME_KEBAB\"|g" web/package.json
 
