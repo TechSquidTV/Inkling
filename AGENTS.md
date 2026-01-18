@@ -11,6 +11,8 @@
 4. **Icons**: Use `lucide-react` for all icons.
 5. **No "Magic" Strings**: Use constants or ENUMs where possible, especially for Auth roles (`admin`, `user`).
 6. **Task Completion**: Always run `make all` (format, lint, build) before declaring a task complete.
+7. **Tanstack Link**: Always use `Link` from `@tanstack/react-router` for navigation. Never use `<a>` tags.
+8. **Tanstack Query**: Always use `useQuery` and `useMutation` for data fetching and mutations. Never use `fetch` or `axios` directly.
 
 ---
 
