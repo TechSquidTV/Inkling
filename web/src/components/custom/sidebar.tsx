@@ -493,55 +493,68 @@ type SidebarMenuButtonProps = React.ComponentProps<'button'> & {
   tooltip?: string | React.ComponentProps<typeof TooltipContent>
 } & VariantProps<typeof sidebarMenuButtonVariants>
 
-function SidebarMenuButton({
-  asChild = false,
-  isActive = false,
-  variant = 'default',
-  size = 'default',
-  tooltip,
-  className,
-  ...props
-}: SidebarMenuButtonProps) {
-  const Comp = asChild ? Slot : 'button'
-  const { isMobile, state } = useSidebar()
+const SidebarMenuButton = React.forwardRef<
+  HTMLButtonElement,
+  SidebarMenuButtonProps
+>(
+  (
+    {
+      asChild = false,
+      isActive = false,
+      variant = 'default',
+      size = 'default',
+      tooltip,
+      className,
+      ...props
+    },
+    ref
+  ) => {
+    const Comp = asChild ? Slot : 'button'
+    const { isMobile, state } = useSidebar()
 
-  const button = (
-    <HighlightItem
-      activeClassName={sidebarMenuButtonActiveVariants({ variant })}
-    >
-      <Comp
-        data-slot="sidebar-menu-button"
-        data-sidebar="menu-button"
-        data-size={size}
-        data-active={isActive}
-        className={cn(sidebarMenuButtonVariants({ variant, size }), className)}
-        {...props}
-      />
-    </HighlightItem>
-  )
+    const button = (
+      <HighlightItem
+        activeClassName={sidebarMenuButtonActiveVariants({ variant })}
+      >
+        <Comp
+          ref={ref}
+          data-slot="sidebar-menu-button"
+          data-sidebar="menu-button"
+          data-size={size}
+          data-active={isActive}
+          className={cn(
+            sidebarMenuButtonVariants({ variant, size }),
+            className
+          )}
+          {...props}
+        />
+      </HighlightItem>
+    )
 
-  if (!tooltip) {
-    return button
-  }
-
-  if (typeof tooltip === 'string') {
-    tooltip = {
-      children: tooltip,
+    if (!tooltip) {
+      return button
     }
-  }
 
-  return (
-    <Tooltip>
-      <TooltipTrigger asChild>{button}</TooltipTrigger>
-      <TooltipContent
-        side="right"
-        align="center"
-        hidden={state !== 'collapsed' || isMobile}
-        {...tooltip}
-      />
-    </Tooltip>
-  )
-}
+    if (typeof tooltip === 'string') {
+      tooltip = {
+        children: tooltip,
+      }
+    }
+
+    return (
+      <Tooltip>
+        <TooltipTrigger asChild>{button}</TooltipTrigger>
+        <TooltipContent
+          side="right"
+          align="center"
+          hidden={state !== 'collapsed' || isMobile}
+          {...tooltip}
+        />
+      </Tooltip>
+    )
+  }
+)
+SidebarMenuButton.displayName = 'SidebarMenuButton'
 
 type SidebarMenuActionProps = React.ComponentProps<'button'> & {
   asChild?: boolean
@@ -569,7 +582,7 @@ function SidebarMenuAction({
         'peer-data-[size=lg]/menu-button:top-2.5',
         'group-data-[collapsible=icon]:hidden',
         showOnHover &&
-          'peer-data-[active=true]/menu-button:text-sidebar-accent-foreground group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 md:opacity-0',
+        'peer-data-[active=true]/menu-button:text-sidebar-accent-foreground group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 md:opacity-0',
         className
       )}
       {...props}

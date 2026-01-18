@@ -110,7 +110,7 @@ function VersionIndicator() {
     fetch('/api/version')
       .then((res) => res.json())
       .then((data) => setVersion(data))
-      .catch(() => {})
+      .catch(() => { })
   }, [])
 
   if (!version) return null

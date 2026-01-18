@@ -1,5 +1,17 @@
 import { IconCirclePlusFilled, IconMail, type Icon } from '@tabler/icons-react'
 import { Link } from '@tanstack/react-router'
+import { APP_CONFIG } from '@/constants'
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -31,14 +43,38 @@ export function NavMain({
               <IconCirclePlusFilled />
               <span>Quick Create</span>
             </SidebarMenuButton>
-            <Button
-              size="icon"
-              className="size-8 group-data-[collapsible=icon]:opacity-0"
-              variant="outline"
-            >
-              <IconMail />
-              <span className="sr-only">Inbox</span>
-            </Button>
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button
+                  size="icon"
+                  className="size-8 group-data-[collapsible=icon]:opacity-0"
+                  variant="outline"
+                >
+                  <IconMail />
+                  <span className="sr-only">Inbox</span>
+                </Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Inbox Notification</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    You have no new messages in your inbox. Check back later!
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Close</AlertDialogCancel>
+                  <AlertDialogAction asChild>
+                    <a
+                      href={`${APP_CONFIG.LINKS.GITHUB}/issues/new`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Open GitHub
+                    </a>
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
           </SidebarMenuItem>
         </SidebarMenu>
         <SidebarMenu>
