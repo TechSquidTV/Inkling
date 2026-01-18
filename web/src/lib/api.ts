@@ -14,20 +14,28 @@ export class APIError extends Error {
   }
 }
 
+import { APP_CONFIG } from '@/constants'
+
 const client = createClient<paths>({
-  baseUrl: '/api',
+  baseUrl: APP_CONFIG.API_BASE_URL,
 })
 
 // Middleware to add auth token
-client.use({
-  async onRequest({ request }) {
+export const authMiddleware = {
+  async onRequest({ request }: { request: Request }) {
     const token = localStorage.getItem('token')
     if (token) {
       request.headers.set('Authorization', `Bearer ${token}`)
     }
     return request
   },
-  async onResponse({ response, request }) {
+  async onResponse({
+    response,
+    request,
+  }: {
+    response: Response
+    request: Request
+  }) {
     const url = new URL(request.url)
 
     logMilestone('api request completed', {
@@ -41,7 +49,9 @@ client.use({
     }
     return response
   },
-})
+}
+
+client.use(authMiddleware)
 
 export { client }
 

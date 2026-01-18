@@ -45,6 +45,7 @@ describe('fetchWithAuth', () => {
     globalThis.fetch = vi.fn().mockResolvedValue({
       status: 401,
       ok: false,
+      headers: new Headers(),
     })
 
     const eventListener = vi.fn()
@@ -62,6 +63,7 @@ describe('fetchWithAuth', () => {
     globalThis.fetch = vi.fn().mockResolvedValue({
       status: 200,
       ok: true,
+      headers: new Headers(),
       json: async () => ({ success: true }),
     })
 
@@ -81,6 +83,7 @@ describe('fetchWithAuth', () => {
       status: 400,
       ok: false,
       statusText: 'Bad Request',
+      headers: new Headers(),
       json: async () => ({ message: 'Invalid input' }),
     })
 
@@ -94,6 +97,7 @@ describe('fetchWithAuth', () => {
     globalThis.fetch = vi.fn().mockResolvedValue({
       status: 204,
       ok: true,
+      headers: new Headers(),
       json: async () => {
         throw new Error('Should not be called')
       },
@@ -110,6 +114,7 @@ describe('fetchWithAuth', () => {
     globalThis.fetch = vi.fn().mockResolvedValue({
       status: 200,
       ok: true,
+      headers: new Headers(),
       json: async () => mockData,
     })
 
@@ -124,11 +129,64 @@ describe('fetchWithAuth', () => {
       status: 500,
       ok: false,
       statusText: 'Internal Server Error',
+      headers: new Headers(),
       json: async () => {
         throw new Error('Not JSON')
       },
     })
 
     await expect(fetchWithAuth('/api/test')).rejects.toThrow(APIError)
+  })
+})
+
+describe('authMiddleware', () => {
+  beforeEach(() => {
+    vi.clearAllMocks()
+
+    // Mock localStorage
+    const store: Record<string, string> = {}
+    Object.defineProperty(window, 'localStorage', {
+      value: {
+        getItem: (key: string) => store[key] || null,
+        setItem: (key: string, value: string) => {
+          store[key] = value.toString()
+        },
+        removeItem: (key: string) => {
+          delete store[key]
+        },
+        clear: () => {
+          for (const key in store) delete store[key]
+        },
+      },
+      writable: true,
+    })
+  })
+
+  it('adds authorization header when token is in localStorage', async () => {
+    const { authMiddleware } = await import('./api')
+    localStorage.setItem('token', 'test-token')
+
+    const request = new Request('http://localhost/api/me', {
+      headers: new Headers(),
+    })
+
+    await authMiddleware.onRequest({ request })
+
+    expect(request.headers.get('Authorization')).toBe('Bearer test-token')
+  })
+
+  it('dispatches auth:unauthorized event on 401', async () => {
+    const { authMiddleware } = await import('./api')
+
+    const request = new Request('http://localhost/api/me')
+    const response = new Response(null, { status: 401 })
+
+    const eventListener = vi.fn()
+    window.addEventListener('auth:unauthorized', eventListener)
+
+    await authMiddleware.onResponse({ response, request })
+
+    expect(eventListener).toHaveBeenCalled()
+    window.removeEventListener('auth:unauthorized', eventListener)
   })
 })

@@ -1,7 +1,10 @@
 export const APP_CONFIG = {
   NAME: 'Inkling',
   BASE_URL: 'http://localhost:8080',
-  API_ENDPOINT: '/api',
+  API_BASE_URL:
+    typeof window !== 'undefined'
+      ? new URL('/api', window.location.origin).toString()
+      : 'http://localhost/api',
   /**
    * Logo configuration
    * Used in: app-logo.tsx, login-form.tsx, signup-form.tsx

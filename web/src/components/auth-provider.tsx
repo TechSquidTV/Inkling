@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import { toast } from 'sonner'
 import { AuthContext, type User } from '@/lib/auth'
-import { fetchWithAuth } from '@/lib/api'
+import { client } from '@/lib/api'
 import { logger, LogKeys } from '@/lib/logger'
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
@@ -14,24 +14,28 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (!token) return
 
     try {
-      const data = await fetchWithAuth<{
-        id: number
-        email: string
-        name: string
-        role: 'admin' | 'user'
-        has_password: boolean
-      }>('/api/me', { token })
-
-      setUser({
-        id: data.id,
-        email: data.email,
-        name: data.name,
-        role: data.role as 'admin' | 'user',
-        hasPassword: data.has_password,
+      const { data, error } = await client.GET('/me', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       })
-      logger
-        .with({ [LogKeys.USER_ID]: data.id })
-        .debug('user info fetched', { email: data.email, role: data.role })
+
+      if (error) {
+        throw new Error(error.detail || 'Failed to fetch user')
+      }
+
+      if (data) {
+        setUser({
+          id: data.id,
+          email: data.email,
+          name: data.name,
+          role: data.role as 'admin' | 'user',
+          hasPassword: data.has_password,
+        })
+        logger
+          .with({ [LogKeys.USER_ID]: data.id })
+          .debug('user info fetched', { email: data.email, role: data.role })
+      }
     } catch (err) {
       logger.error('failed to fetch user info', { error: err })
       setUser(null)
@@ -70,7 +74,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   // Fetch user info when token changes
   useEffect(() => {
     if (token) {
-      fetchUser() // eslint-disable-line
+      fetchUser()
     }
   }, [token, fetchUser])
 
