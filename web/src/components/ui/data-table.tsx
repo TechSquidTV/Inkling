@@ -70,16 +70,19 @@ export function DataTable<TData, TValue>({
     <Table>
       <TableHeader>
         {table.getHeaderGroups().map((headerGroup) => (
-          <TableRow key={headerGroup.id}>
+          <TableRow
+            key={headerGroup.id}
+            className="bg-muted/50 hover:bg-muted/75"
+          >
             {headerGroup.headers.map((header) => {
               return (
                 <TableHead key={header.id}>
                   {header.isPlaceholder
                     ? null
                     : flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
+                      header.column.columnDef.header,
+                      header.getContext()
+                    )}
                 </TableHead>
               )
             })}
@@ -149,10 +152,10 @@ export function DataTable<TData, TValue>({
         onDragEnd={handleDragEnd}
         sensors={sensors}
       >
-        <div className="rounded-md border">{TableContent}</div>
+        <div className="rounded-md border overflow-hidden">{TableContent}</div>
       </DndContext>
     )
   }
 
-  return <div className="rounded-md border">{TableContent}</div>
+  return <div className="rounded-md border overflow-hidden">{TableContent}</div>
 }
