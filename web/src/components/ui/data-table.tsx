@@ -80,9 +80,9 @@ export function DataTable<TData, TValue>({
                   {header.isPlaceholder
                     ? null
                     : flexRender(
-                      header.column.columnDef.header,
-                      header.getContext()
-                    )}
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
                 </TableHead>
               )
             })}
@@ -152,10 +152,10 @@ export function DataTable<TData, TValue>({
         onDragEnd={handleDragEnd}
         sensors={sensors}
       >
-        <div className="rounded-md border overflow-hidden">{TableContent}</div>
+        <div className="overflow-hidden rounded-md border">{TableContent}</div>
       </DndContext>
     )
   }
 
-  return <div className="rounded-md border overflow-hidden">{TableContent}</div>
+  return <div className="overflow-hidden rounded-md border">{TableContent}</div>
 }
