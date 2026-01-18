@@ -1,7 +1,6 @@
-'use client'
-
 import * as React from 'react'
 import { type Icon } from '@tabler/icons-react'
+import { Link } from '@tanstack/react-router'
 
 import {
   SidebarGroup,
@@ -25,16 +24,26 @@ export function NavSecondary({
     <SidebarGroup {...props}>
       <SidebarGroupContent>
         <SidebarMenu>
-          {items.map((item) => (
-            <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton asChild>
-                <a href={item.url}>
-                  <item.icon />
-                  <span>{item.title}</span>
-                </a>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          ))}
+          {items.map((item) => {
+            const isExternal = item.url.startsWith('http') || item.url.startsWith('#')
+            return (
+              <SidebarMenuItem key={item.title}>
+                <SidebarMenuButton asChild>
+                  {isExternal ? (
+                    <a href={item.url} target={item.url.startsWith('http') ? '_blank' : undefined} rel={item.url.startsWith('http') ? 'noreferrer' : undefined}>
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </a>
+                  ) : (
+                    <Link to={item.url}>
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </Link>
+                  )}
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            )
+          })}
         </SidebarMenu>
       </SidebarGroupContent>
     </SidebarGroup>

@@ -27,5 +27,30 @@ func InitDB(path string) (*gorm.DB, error) {
 	}
 
 	DB = db
+
+	if err := seedDB(db); err != nil {
+		return nil, err
+	}
+
 	return db, nil
+}
+
+// seedDB populates the database with initial data if empty.
+func seedDB(db *gorm.DB) error {
+	var count int64
+	if err := db.Model(&User{}).Count(&count).Error; err != nil {
+		return err
+	}
+
+	if count == 0 {
+		admin := User{
+			Email: "admin@example.com",
+			Name:  "Admin User",
+			Role:  RoleAdmin,
+		}
+		if err := db.Create(&admin).Error; err != nil {
+			return err
+		}
+	}
+	return nil
 }

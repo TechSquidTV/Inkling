@@ -6,9 +6,9 @@ import { CSS } from '@dnd-kit/utilities'
 import { IconGripVertical } from '@tabler/icons-react'
 import { Button } from '@/components/ui/button'
 import { TableCell, TableRow } from '@/components/ui/table'
-import { type DataTableItem } from './schema'
+import { type UniqueIdentifier } from '@dnd-kit/core'
 
-export function DragHandle({ id }: { id: number }) {
+export function DragHandle({ id }: { id: UniqueIdentifier }) {
   const { attributes, listeners } = useSortable({
     id,
   })
@@ -27,9 +27,16 @@ export function DragHandle({ id }: { id: number }) {
   )
 }
 
-export function DraggableRow({ row }: { row: Row<DataTableItem> }) {
+interface DraggableRowProps<TData> {
+  row: Row<TData>
+}
+
+// Extends TData to ensure it has an ID, or we assume caller handles it? 
+// For safety, let's assume the row.original has an id property or we use row.id
+export function DraggableRow<TData>({ row }: DraggableRowProps<TData>) {
   const { transform, transition, setNodeRef, isDragging } = useSortable({
-    id: row.original.id,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    id: (row.original as any).id,
   })
 
   return (
