@@ -32,17 +32,20 @@ When building personal apps, I found myself often wasting a lot of time and toke
 - [Node.js](https://nodejs.org/) & [pnpm](https://pnpm.io/)
 
 ### Installation
-1. **Clone and install dependencies:**
+1. **Clone the repository:**
    ```bash
    git clone git@github.com:TechSquidTV/Inkling.git
    cd Inkling
-   make install
    ```
 2. **Customize:**
    ```bash
    make init
    ```
-3. **Start the development servers:**
+3. **Install dependencies:**
+   ```bash
+   make install
+   ```
+4. **Start the development servers:**
    ```bash
    make dev
    ```

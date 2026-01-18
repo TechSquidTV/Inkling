@@ -90,7 +90,10 @@ fi
 
 # 1. Update Go module path using Go tooling
 echo "  → go.mod (using go mod edit)"
-go mod edit -module "$MODULE_PATH"
+if ! go mod edit -module "$MODULE_PATH"; then
+    echo "    ⚠️ go mod edit failed, falling back to sed..."
+    sed "${SED_INPLACE[@]}" "s|module github.com/techsquidtv/inkling|module $MODULE_PATH|g" go.mod
+fi
 
 # 2. Update all Go import paths
 echo "  → Updating Go import paths in all .go files"
@@ -146,6 +149,7 @@ rm -rf web/dist
 rm -rf cmd/server/dist
 rm -f app.db
 rm -f coverage.out
+rm -f go.sum # Remove go.sum to prevent conflicts
 
 # Run go mod tidy to ensure imports are correct
 echo ""
