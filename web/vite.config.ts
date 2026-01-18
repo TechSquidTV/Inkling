@@ -38,11 +38,33 @@ export default defineConfig({
             if (id.includes('lucide-react')) {
               return 'lucide-react'
             }
-            if (id.includes('@radix-ui')) {
+            if (id.includes('@radix-ui') || id.includes('radix-ui')) {
               return 'radix-ui'
+            }
+            if (
+              id.includes('vaul') ||
+              id.includes('sonner') ||
+              id.includes('class-variance-authority') ||
+              id.includes('clsx') ||
+              id.includes('tailwind-merge')
+            ) {
+              return 'ui-vendor'
+            }
+            if (id.includes('@tanstack')) {
+              return 'tanstack-vendor'
             }
             if (id.includes('framer-motion') || id.includes('motion')) {
               return 'motion'
+            }
+            if (id.includes('zod') || id.includes('logtape')) {
+              return 'utils-vendor'
+            }
+            if (
+              id.includes('/react/') ||
+              id.includes('/react-dom/') ||
+              id.includes('/scheduler/')
+            ) {
+              return 'react-vendor'
             }
           }
         },

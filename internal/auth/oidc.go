@@ -31,6 +31,10 @@ func NewOIDCProvider(ctx context.Context) (*OIDCProvider, error) {
 	clientSecret := os.Getenv("OIDC_CLIENT_SECRET")
 	redirectURL := os.Getenv("OIDC_REDIRECT_URL")
 
+	if issuer == "" && clientID == "" {
+		return nil, nil
+	}
+
 	if issuer == "" || clientID == "" {
 		return nil, fmt.Errorf("OIDC_ISSUER and OIDC_CLIENT_ID must be set")
 	}
