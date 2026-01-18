@@ -18,11 +18,7 @@ import {
   DropDrawerLabel,
   DropDrawerItem,
 } from '@/components/custom/drop-drawer'
-import {
-  IconChevronDown,
-  IconCheck,
-  IconPlus,
-} from '@tabler/icons-react'
+import { IconChevronDown, IconCheck, IconPlus } from '@tabler/icons-react'
 
 import initialData from './data.json'
 import { columns } from './-components/columns'
@@ -38,34 +34,14 @@ export const Route = createFileRoute('/_auth/dashboard')({
 function Dashboard() {
   const [view, setView] = useState('outline')
 
-  // We need to implement the data update logic here or pass it down
-  const updateData = (rowId: string, columnId: string, value: unknown) => {
-    // setData logic involves hook state. 
-    // Ideally useDataTable would expose setData or an updater.
-    // The current hook returns `setData`.
-    tableDataUpdater(rowId, columnId, value)
-  }
-
-  // Handle reorder from drag and drop
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleReorder = (newData: any[]) => {
-    // setData(newData) provided by hook handles local state
-    // but if we need to sync with server/parent, do it here.
-    console.log("Reorder happened", newData.length)
-  }
-
-  const { table, setData, handleDragEnd } = useDataTable({
-    data: initialData,
-    columns,
-    meta: { updateData },
-    onReorder: handleReorder,
-  })
-
   // Helper to update the hook's local state
-  const tableDataUpdater = (rowId: string, columnId: string, value: unknown) => {
+  const tableDataUpdater = (
+    rowId: string,
+    columnId: string,
+    value: unknown
+  ) => {
     setData((old) =>
       old.map((row) => {
-        // @ts-expect-error - assuming id
         if (row.id.toString() === rowId) {
           return {
             ...row,
@@ -77,11 +53,20 @@ function Dashboard() {
     )
   }
 
-  // We overwrite the meta's updateData to close over the setData from the hook
-  table.options.meta = {
-    ...table.options.meta,
-    updateData: tableDataUpdater
+  // Handle reorder from drag and drop
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleReorder = (newData: any[]) => {
+    // setData(newData) provided by hook handles local state
+    // but if we need to sync with server/parent, do it here.
+    console.log('Reorder happened', newData.length)
   }
+
+  const { table, setData, handleDragEnd } = useDataTable({
+    data: initialData,
+    columns,
+    meta: { updateData: tableDataUpdater },
+    onReorder: handleReorder,
+  })
 
   return (
     <DashboardLayout title="Dashboard" description="Overview of your activity.">
@@ -101,10 +86,38 @@ function Dashboard() {
             </DropDrawerTrigger>
             <DropDrawerContent className="w-56">
               <DropDrawerLabel>Select View</DropDrawerLabel>
-              <DropDrawerItem onSelect={() => setView('outline')} icon={view === 'outline' && <IconCheck className="size-4" />}>Outline</DropDrawerItem>
-              <DropDrawerItem onSelect={() => setView('past-performance')} icon={view === 'past-performance' && <IconCheck className="size-4" />}>Past Performance</DropDrawerItem>
-              <DropDrawerItem onSelect={() => setView('key-personnel')} icon={view === 'key-personnel' && <IconCheck className="size-4" />}>Key Personnel</DropDrawerItem>
-              <DropDrawerItem onSelect={() => setView('focus-documents')} icon={view === 'focus-documents' && <IconCheck className="size-4" />}>Focus Documents</DropDrawerItem>
+              <DropDrawerItem
+                onSelect={() => setView('outline')}
+                icon={view === 'outline' && <IconCheck className="size-4" />}
+              >
+                Outline
+              </DropDrawerItem>
+              <DropDrawerItem
+                onSelect={() => setView('past-performance')}
+                icon={
+                  view === 'past-performance' && (
+                    <IconCheck className="size-4" />
+                  )
+                }
+              >
+                Past Performance
+              </DropDrawerItem>
+              <DropDrawerItem
+                onSelect={() => setView('key-personnel')}
+                icon={
+                  view === 'key-personnel' && <IconCheck className="size-4" />
+                }
+              >
+                Key Personnel
+              </DropDrawerItem>
+              <DropDrawerItem
+                onSelect={() => setView('focus-documents')}
+                icon={
+                  view === 'focus-documents' && <IconCheck className="size-4" />
+                }
+              >
+                Focus Documents
+              </DropDrawerItem>
             </DropDrawerContent>
           </DropDrawer>
 
@@ -130,7 +143,10 @@ function Dashboard() {
         </div>
 
         <TabsContents>
-          <TabsContent value="outline" className="relative flex flex-col gap-4 overflow-auto px-4 lg:px-6">
+          <TabsContent
+            value="outline"
+            className="relative flex flex-col gap-4 overflow-auto px-4 lg:px-6"
+          >
             <DataTable
               table={table}
               columns={columns}
@@ -138,13 +154,22 @@ function Dashboard() {
               handleDragEnd={handleDragEnd}
             />
           </TabsContent>
-          <TabsContent value="past-performance" className="flex flex-col px-4 lg:px-6">
+          <TabsContent
+            value="past-performance"
+            className="flex flex-col px-4 lg:px-6"
+          >
             <div className="aspect-video w-full flex-1 rounded-lg border border-dashed"></div>
           </TabsContent>
-          <TabsContent value="key-personnel" className="flex flex-col px-4 lg:px-6">
+          <TabsContent
+            value="key-personnel"
+            className="flex flex-col px-4 lg:px-6"
+          >
             <div className="aspect-video w-full flex-1 rounded-lg border border-dashed"></div>
           </TabsContent>
-          <TabsContent value="focus-documents" className="flex flex-col px-4 lg:px-6">
+          <TabsContent
+            value="focus-documents"
+            className="flex flex-col px-4 lg:px-6"
+          >
             <div className="aspect-video w-full flex-1 rounded-lg border border-dashed"></div>
           </TabsContent>
         </TabsContents>

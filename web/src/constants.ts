@@ -16,9 +16,6 @@ export const APP_CONFIG = {
    */
   LINKS: {
     GITHUB: 'https://github.com/TechSquidTV/inkling',
-    TERMS: '#',
-    PRIVACY: '#',
-    HELP: '#',
   },
   /**
    * Logging configuration

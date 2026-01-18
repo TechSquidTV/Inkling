@@ -31,7 +31,7 @@ interface DraggableRowProps<TData> {
   row: Row<TData>
 }
 
-// Extends TData to ensure it has an ID, or we assume caller handles it? 
+// Extends TData to ensure it has an ID, or we assume caller handles it?
 // For safety, let's assume the row.original has an id property or we use row.id
 export function DraggableRow<TData>({ row }: DraggableRowProps<TData>) {
   const { transform, transition, setNodeRef, isDragging } = useSortable({

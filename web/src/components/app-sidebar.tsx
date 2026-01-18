@@ -4,7 +4,6 @@ import { AppLogo } from '@/components/app-logo'
 import {
   IconDashboard,
   IconHelp,
-  IconSearch,
   IconSettings,
   IconTerminal,
 } from '@tabler/icons-react'
@@ -44,14 +43,9 @@ const data = {
       icon: IconSettings,
     },
     {
-      title: 'Get Help',
-      url: APP_CONFIG.LINKS.HELP,
+      title: 'Documentation',
+      url: APP_CONFIG.LINKS.GITHUB,
       icon: IconHelp,
-    },
-    {
-      title: 'Search',
-      url: '#',
-      icon: IconSearch,
     },
   ],
 }

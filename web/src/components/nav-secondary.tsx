@@ -25,12 +25,21 @@ export function NavSecondary({
       <SidebarGroupContent>
         <SidebarMenu>
           {items.map((item) => {
-            const isExternal = item.url.startsWith('http') || item.url.startsWith('#')
+            const isExternal =
+              item.url.startsWith('http') || item.url.startsWith('#')
             return (
               <SidebarMenuItem key={item.title}>
                 <SidebarMenuButton asChild>
                   {isExternal ? (
-                    <a href={item.url} target={item.url.startsWith('http') ? '_blank' : undefined} rel={item.url.startsWith('http') ? 'noreferrer' : undefined}>
+                    <a
+                      href={item.url}
+                      target={
+                        item.url.startsWith('http') ? '_blank' : undefined
+                      }
+                      rel={
+                        item.url.startsWith('http') ? 'noreferrer' : undefined
+                      }
+                    >
                       <item.icon />
                       <span>{item.title}</span>
                     </a>

@@ -118,15 +118,7 @@ export function LoginForm({
                     field.state.meta.isTouched && !field.state.meta.isValid
                   return (
                     <Field data-invalid={isInvalid}>
-                      <div className="flex items-center">
-                        <FieldLabel htmlFor={field.name}>Password</FieldLabel>
-                        <a
-                          href="#"
-                          className="ml-auto text-sm underline-offset-2 hover:underline"
-                        >
-                          Forgot your password?
-                        </a>
-                      </div>
+                      <FieldLabel htmlFor={field.name}>Password</FieldLabel>
                       <Input
                         id={field.name}
                         name={field.name}
@@ -194,11 +186,6 @@ export function LoginForm({
           <AuthBrandImage />
         </CardContent>
       </Card>
-      <FieldDescription className="px-6 text-center">
-        By clicking continue, you agree to our{' '}
-        <a href={APP_CONFIG.LINKS.TERMS}>Terms of Service</a> and{' '}
-        <a href={APP_CONFIG.LINKS.PRIVACY}>Privacy Policy</a>.
-      </FieldDescription>
     </div>
   )
 }

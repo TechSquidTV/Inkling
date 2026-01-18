@@ -210,11 +210,6 @@ export function SignUpForm({
           <AuthBrandImage />
         </CardContent>
       </Card>
-      <FieldDescription className="px-6 text-center">
-        By clicking continue, you agree to our{' '}
-        <a href={APP_CONFIG.LINKS.TERMS}>Terms of Service</a> and{' '}
-        <a href={APP_CONFIG.LINKS.PRIVACY}>Privacy Policy</a>.
-      </FieldDescription>
     </div>
   )
 }
