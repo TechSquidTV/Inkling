@@ -1,9 +1,11 @@
-# Go
+# Go binaries
+/server
+/main
 bin/
 out/
 /go.sum
-server
-main
+/bin/server
+/bin/main
 
 # Frontend
 node_modules/
@@ -17,7 +19,7 @@ coverage/
 coverage.out
 
 # Logs
-logs
+/logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
