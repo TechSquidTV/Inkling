@@ -159,6 +159,8 @@ echo -e "${BLUE}🧹 Cleaning generated files...${NC}"
 rm -f openapi.json
 rm -rf web/dist
 rm -rf cmd/server/dist
+mkdir -p cmd/server/dist
+touch cmd/server/dist/.gitkeep
 rm -f app.db
 rm -f coverage.out
 rm -f go.sum # Remove go.sum to prevent conflicts

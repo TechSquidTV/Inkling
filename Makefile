@@ -43,6 +43,8 @@ dev-frontend:
 # OpenAPI Generation
 openapi-gen:
 	@echo "Generating OpenAPI spec..."
+	@mkdir -p cmd/server/dist
+	@touch cmd/server/dist/index.html
 	@go run cmd/server/main.go openapi > openapi.json
 	@echo "Generating frontend API types..."
 	@cd web && pnpm openapi:generate
