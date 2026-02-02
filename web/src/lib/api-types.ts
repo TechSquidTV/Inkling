@@ -4,1304 +4,1304 @@
  */
 
 export interface paths {
-    "/admin/settings": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Get admin settings
-         * @description Retrieve application settings. Requires admin role.
-         */
-        get: operations["get-admin-settings"];
-        /**
-         * Update admin settings
-         * @description Update application settings. Requires admin role.
-         */
-        put: operations["update-admin-settings"];
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/admin/users": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * List all users
-         * @description Returns a list of all users. Requires admin role.
-         */
-        get: operations["list-users"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/admin/users/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        /**
-         * Update user role
-         * @description Update a user's role. Requires admin role. Cannot demote the last admin.
-         */
-        put: operations["update-user-role"];
-        post?: never;
-        /**
-         * Delete user
-         * @description Delete a user. Requires admin role. Cannot delete yourself.
-         */
-        delete: operations["delete-user"];
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/auth/callback": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** OIDC Callback */
-        get: operations["callback"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/auth/login": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Login with OIDC */
-        get: operations["login"];
-        put?: never;
-        /** Login with email and password */
-        post: operations["login-email"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/auth/signup": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /** Register a new user */
-        post: operations["signup"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/greeting/{name}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Get greeting by name */
-        get: operations["get-greeting-by-name"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/health": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Get health */
-        get: operations["get-health"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/keys": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** List API Keys */
-        get: operations["list-api-keys"];
-        put?: never;
-        /** Create API Key */
-        post: operations["create-api-key"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/keys/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post?: never;
-        /** Revoke API Key */
-        delete: operations["revoke-api-key"];
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/me": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Get current user info
-         * @description Returns the authenticated user's information including role.
-         */
-        get: operations["get-current-user"];
-        /**
-         * Update profile
-         * @description Update the current user's name and/or email.
-         */
-        put: operations["update-profile"];
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/me/password": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        /**
-         * Change password
-         * @description Change the current user's password. Requires current password for verification.
-         */
-        put: operations["change-password"];
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/products": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** List products */
-        get: operations["list-products"];
-        put?: never;
-        /**
-         * Create product
-         * @description Create a new product. Requires admin role.
-         */
-        post: operations["create-product"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/products/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Get products by ID */
-        get: operations["get-products-by-id"];
-        put?: never;
-        post?: never;
-        /**
-         * Delete product
-         * @description Delete a product. Requires admin role.
-         */
-        delete: operations["delete-product"];
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/version": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Get version */
-        get: operations["get-version"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
+  '/admin/settings': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Get admin settings
+     * @description Retrieve application settings. Requires admin role.
+     */
+    get: operations['get-admin-settings']
+    /**
+     * Update admin settings
+     * @description Update application settings. Requires admin role.
+     */
+    put: operations['update-admin-settings']
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/admin/users': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * List all users
+     * @description Returns a list of all users. Requires admin role.
+     */
+    get: operations['list-users']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/admin/users/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get?: never
+    /**
+     * Update user role
+     * @description Update a user's role. Requires admin role. Cannot demote the last admin.
+     */
+    put: operations['update-user-role']
+    post?: never
+    /**
+     * Delete user
+     * @description Delete a user. Requires admin role. Cannot delete yourself.
+     */
+    delete: operations['delete-user']
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/auth/callback': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** OIDC Callback */
+    get: operations['callback']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/auth/login': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** Login with OIDC */
+    get: operations['login']
+    put?: never
+    /** Login with email and password */
+    post: operations['login-email']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/auth/signup': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get?: never
+    put?: never
+    /** Register a new user */
+    post: operations['signup']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/greeting/{name}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** Get greeting by name */
+    get: operations['get-greeting-by-name']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/health': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** Get health */
+    get: operations['get-health']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/keys': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** List API Keys */
+    get: operations['list-api-keys']
+    put?: never
+    /** Create API Key */
+    post: operations['create-api-key']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/keys/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get?: never
+    put?: never
+    post?: never
+    /** Revoke API Key */
+    delete: operations['revoke-api-key']
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/me': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Get current user info
+     * @description Returns the authenticated user's information including role.
+     */
+    get: operations['get-current-user']
+    /**
+     * Update profile
+     * @description Update the current user's name and/or email.
+     */
+    put: operations['update-profile']
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/me/password': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get?: never
+    /**
+     * Change password
+     * @description Change the current user's password. Requires current password for verification.
+     */
+    put: operations['change-password']
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/products': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** List products */
+    get: operations['list-products']
+    put?: never
+    /**
+     * Create product
+     * @description Create a new product. Requires admin role.
+     */
+    post: operations['create-product']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/products/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** Get products by ID */
+    get: operations['get-products-by-id']
+    put?: never
+    post?: never
+    /**
+     * Delete product
+     * @description Delete a product. Requires admin role.
+     */
+    delete: operations['delete-product']
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/version': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** Get version */
+    get: operations['get-version']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
 }
-export type webhooks = Record<string, never>;
+export type webhooks = Record<string, never>
 export interface components {
-    schemas: {
-        APIKey: {
-            /** Format: date-time */
-            created_at: string;
-            /** Format: int64 */
-            id: number;
-            /** Format: date-time */
-            last_used?: string;
-            name: string;
-            prefix: string;
-        };
-        AdminSettingsOutputBody: {
-            /**
-             * Format: uri
-             * @description A URL to the JSON Schema for this object.
-             * @example https://example.com/schemas/AdminSettingsOutputBody.json
-             */
-            readonly $schema?: string;
-            /** @description Whether user registration is enabled */
-            registration_enabled: boolean;
-        };
-        CallbackOutputBody: {
-            /**
-             * Format: uri
-             * @description A URL to the JSON Schema for this object.
-             * @example https://example.com/schemas/CallbackOutputBody.json
-             */
-            readonly $schema?: string;
-            token: string;
-        };
-        ChangePasswordInputBody: {
-            /**
-             * Format: uri
-             * @description A URL to the JSON Schema for this object.
-             * @example https://example.com/schemas/ChangePasswordInputBody.json
-             */
-            readonly $schema?: string;
-            /** @description Current password for verification */
-            current_password: string;
-            /** @description New password (min 8 chars) */
-            new_password: string;
-        };
-        CreateKeyInputBody: {
-            /**
-             * Format: uri
-             * @description A URL to the JSON Schema for this object.
-             * @example https://example.com/schemas/CreateKeyInputBody.json
-             */
-            readonly $schema?: string;
-            /** @description Optional name for the key */
-            name?: string;
-        };
-        CreateKeyOutputBody: {
-            /**
-             * Format: uri
-             * @description A URL to the JSON Schema for this object.
-             * @example https://example.com/schemas/CreateKeyOutputBody.json
-             */
-            readonly $schema?: string;
-            /** @description The raw API key. This is only returned once. */
-            key: string;
-        };
-        DeletedAt: {
-            /** Format: date-time */
-            Time: string;
-            Valid: boolean;
-        };
-        ErrorDetail: {
-            /** @description Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id' */
-            location?: string;
-            /** @description Error message text */
-            message?: string;
-            /** @description The value at the given location */
-            value?: unknown;
-        };
-        ErrorModel: {
-            /**
-             * Format: uri
-             * @description A URL to the JSON Schema for this object.
-             * @example https://example.com/schemas/ErrorModel.json
-             */
-            readonly $schema?: string;
-            /**
-             * @description A human-readable explanation specific to this occurrence of the problem.
-             * @example Property foo is required but is missing.
-             */
-            detail?: string;
-            /** @description Optional list of individual error details */
-            errors?: components["schemas"]["ErrorDetail"][] | null;
-            /**
-             * Format: uri
-             * @description A URI reference that identifies the specific occurrence of the problem.
-             * @example https://example.com/error-log/abc123
-             */
-            instance?: string;
-            /**
-             * Format: int64
-             * @description HTTP status code
-             * @example 400
-             */
-            status?: number;
-            /**
-             * @description A short, human-readable summary of the problem type. This value should not change between occurrences of the error.
-             * @example Bad Request
-             */
-            title?: string;
-            /**
-             * Format: uri
-             * @description A URI reference to human-readable documentation for the error.
-             * @default about:blank
-             * @example https://example.com/errors/example
-             */
-            type: string;
-        };
-        GreetingOutputBody: {
-            /**
-             * Format: uri
-             * @description A URL to the JSON Schema for this object.
-             * @example https://example.com/schemas/GreetingOutputBody.json
-             */
-            readonly $schema?: string;
-            /**
-             * @description Greeting message
-             * @example Hello, world!
-             */
-            message: string;
-        };
-        HealthOutputBody: {
-            /**
-             * Format: uri
-             * @description A URL to the JSON Schema for this object.
-             * @example https://example.com/schemas/HealthOutputBody.json
-             */
-            readonly $schema?: string;
-            /**
-             * @description Status of the server
-             * @example ok
-             */
-            status: string;
-        };
-        ListKeysOutputBody: {
-            /**
-             * Format: uri
-             * @description A URL to the JSON Schema for this object.
-             * @example https://example.com/schemas/ListKeysOutputBody.json
-             */
-            readonly $schema?: string;
-            keys: components["schemas"]["APIKey"][] | null;
-        };
-        ListUsersOutputBody: {
-            /**
-             * Format: uri
-             * @description A URL to the JSON Schema for this object.
-             * @example https://example.com/schemas/ListUsersOutputBody.json
-             */
-            readonly $schema?: string;
-            /** Format: int64 */
-            total: number;
-            users: components["schemas"]["UserInfo"][] | null;
-        };
-        "Login-emailRequest": {
-            /**
-             * Format: uri
-             * @description A URL to the JSON Schema for this object.
-             * @example https://example.com/schemas/Login-emailRequest.json
-             */
-            readonly $schema?: string;
-            /** Format: email */
-            email: string;
-            password: string;
-        };
-        Product: {
-            /**
-             * Format: uri
-             * @description A URL to the JSON Schema for this object.
-             * @example https://example.com/schemas/Product.json
-             */
-            readonly $schema?: string;
-            /** Format: date-time */
-            CreatedAt: string;
-            DeletedAt: components["schemas"]["DeletedAt"];
-            /** Format: int64 */
-            ID: number;
-            /** Format: date-time */
-            UpdatedAt: string;
-            code: string;
-            /** Format: int64 */
-            price: number;
-        };
-        ProductInputBody: {
-            /**
-             * Format: uri
-             * @description A URL to the JSON Schema for this object.
-             * @example https://example.com/schemas/ProductInputBody.json
-             */
-            readonly $schema?: string;
-            /**
-             * @description Unique product code
-             * @example D42
-             */
-            code: string;
-            /**
-             * Format: int64
-             * @description Product price
-             * @example 100
-             */
-            price: number;
-        };
-        SignupRequest: {
-            /**
-             * Format: uri
-             * @description A URL to the JSON Schema for this object.
-             * @example https://example.com/schemas/SignupRequest.json
-             */
-            readonly $schema?: string;
-            /** Format: email */
-            email: string;
-            name: string;
-            password: string;
-        };
-        UpdateAdminSettingsInputBody: {
-            /**
-             * Format: uri
-             * @description A URL to the JSON Schema for this object.
-             * @example https://example.com/schemas/UpdateAdminSettingsInputBody.json
-             */
-            readonly $schema?: string;
-            /** @description Enable or disable user registration */
-            registration_enabled?: boolean;
-        };
-        UpdateProfileInputBody: {
-            /**
-             * Format: uri
-             * @description A URL to the JSON Schema for this object.
-             * @example https://example.com/schemas/UpdateProfileInputBody.json
-             */
-            readonly $schema?: string;
-            /**
-             * Format: email
-             * @description New email address
-             */
-            email?: string;
-            /** @description New display name */
-            name?: string;
-        };
-        UpdateUserRoleInputBody: {
-            /**
-             * Format: uri
-             * @description A URL to the JSON Schema for this object.
-             * @example https://example.com/schemas/UpdateUserRoleInputBody.json
-             */
-            readonly $schema?: string;
-            /**
-             * @description New role for the user
-             * @enum {string}
-             */
-            role: "admin" | "user";
-        };
-        UserInfo: {
-            /** Format: date-time */
-            created_at: string;
-            email: string;
-            /** Format: int64 */
-            id: number;
-            name: string;
-            role: string;
-        };
-        UserOutputBody: {
-            /**
-             * Format: uri
-             * @description A URL to the JSON Schema for this object.
-             * @example https://example.com/schemas/UserOutputBody.json
-             */
-            readonly $schema?: string;
-            email: string;
-            /** @description Whether user has a password set (false for OIDC-only users) */
-            has_password: boolean;
-            /** Format: int64 */
-            id: number;
-            name: string;
-            role: string;
-        };
-        VersionOutputBody: {
-            /**
-             * Format: uri
-             * @description A URL to the JSON Schema for this object.
-             * @example https://example.com/schemas/VersionOutputBody.json
-             */
-            readonly $schema?: string;
-            /**
-             * @description Time the binary was built
-             * @example 2026-01-16T02:30:47-05:00
-             */
-            build_time: string;
-            /**
-             * @description Git commit hash
-             * @example abc123
-             */
-            commit: string;
-            /**
-             * @description Self-hosted app version
-             * @example v0.1.0
-             */
-            version: string;
-        };
-    };
-    responses: never;
-    parameters: never;
-    requestBodies: never;
-    headers: never;
-    pathItems: never;
+  schemas: {
+    APIKey: {
+      /** Format: date-time */
+      created_at: string
+      /** Format: int64 */
+      id: number
+      /** Format: date-time */
+      last_used?: string
+      name: string
+      prefix: string
+    }
+    AdminSettingsOutputBody: {
+      /**
+       * Format: uri
+       * @description A URL to the JSON Schema for this object.
+       * @example https://example.com/schemas/AdminSettingsOutputBody.json
+       */
+      readonly $schema?: string
+      /** @description Whether user registration is enabled */
+      registration_enabled: boolean
+    }
+    CallbackOutputBody: {
+      /**
+       * Format: uri
+       * @description A URL to the JSON Schema for this object.
+       * @example https://example.com/schemas/CallbackOutputBody.json
+       */
+      readonly $schema?: string
+      token: string
+    }
+    ChangePasswordInputBody: {
+      /**
+       * Format: uri
+       * @description A URL to the JSON Schema for this object.
+       * @example https://example.com/schemas/ChangePasswordInputBody.json
+       */
+      readonly $schema?: string
+      /** @description Current password for verification */
+      current_password: string
+      /** @description New password (min 8 chars) */
+      new_password: string
+    }
+    CreateKeyInputBody: {
+      /**
+       * Format: uri
+       * @description A URL to the JSON Schema for this object.
+       * @example https://example.com/schemas/CreateKeyInputBody.json
+       */
+      readonly $schema?: string
+      /** @description Optional name for the key */
+      name?: string
+    }
+    CreateKeyOutputBody: {
+      /**
+       * Format: uri
+       * @description A URL to the JSON Schema for this object.
+       * @example https://example.com/schemas/CreateKeyOutputBody.json
+       */
+      readonly $schema?: string
+      /** @description The raw API key. This is only returned once. */
+      key: string
+    }
+    DeletedAt: {
+      /** Format: date-time */
+      Time: string
+      Valid: boolean
+    }
+    ErrorDetail: {
+      /** @description Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id' */
+      location?: string
+      /** @description Error message text */
+      message?: string
+      /** @description The value at the given location */
+      value?: unknown
+    }
+    ErrorModel: {
+      /**
+       * Format: uri
+       * @description A URL to the JSON Schema for this object.
+       * @example https://example.com/schemas/ErrorModel.json
+       */
+      readonly $schema?: string
+      /**
+       * @description A human-readable explanation specific to this occurrence of the problem.
+       * @example Property foo is required but is missing.
+       */
+      detail?: string
+      /** @description Optional list of individual error details */
+      errors?: components['schemas']['ErrorDetail'][] | null
+      /**
+       * Format: uri
+       * @description A URI reference that identifies the specific occurrence of the problem.
+       * @example https://example.com/error-log/abc123
+       */
+      instance?: string
+      /**
+       * Format: int64
+       * @description HTTP status code
+       * @example 400
+       */
+      status?: number
+      /**
+       * @description A short, human-readable summary of the problem type. This value should not change between occurrences of the error.
+       * @example Bad Request
+       */
+      title?: string
+      /**
+       * Format: uri
+       * @description A URI reference to human-readable documentation for the error.
+       * @default about:blank
+       * @example https://example.com/errors/example
+       */
+      type: string
+    }
+    GreetingOutputBody: {
+      /**
+       * Format: uri
+       * @description A URL to the JSON Schema for this object.
+       * @example https://example.com/schemas/GreetingOutputBody.json
+       */
+      readonly $schema?: string
+      /**
+       * @description Greeting message
+       * @example Hello, world!
+       */
+      message: string
+    }
+    HealthOutputBody: {
+      /**
+       * Format: uri
+       * @description A URL to the JSON Schema for this object.
+       * @example https://example.com/schemas/HealthOutputBody.json
+       */
+      readonly $schema?: string
+      /**
+       * @description Status of the server
+       * @example ok
+       */
+      status: string
+    }
+    ListKeysOutputBody: {
+      /**
+       * Format: uri
+       * @description A URL to the JSON Schema for this object.
+       * @example https://example.com/schemas/ListKeysOutputBody.json
+       */
+      readonly $schema?: string
+      keys: components['schemas']['APIKey'][] | null
+    }
+    ListUsersOutputBody: {
+      /**
+       * Format: uri
+       * @description A URL to the JSON Schema for this object.
+       * @example https://example.com/schemas/ListUsersOutputBody.json
+       */
+      readonly $schema?: string
+      /** Format: int64 */
+      total: number
+      users: components['schemas']['UserInfo'][] | null
+    }
+    'Login-emailRequest': {
+      /**
+       * Format: uri
+       * @description A URL to the JSON Schema for this object.
+       * @example https://example.com/schemas/Login-emailRequest.json
+       */
+      readonly $schema?: string
+      /** Format: email */
+      email: string
+      password: string
+    }
+    Product: {
+      /**
+       * Format: uri
+       * @description A URL to the JSON Schema for this object.
+       * @example https://example.com/schemas/Product.json
+       */
+      readonly $schema?: string
+      /** Format: date-time */
+      CreatedAt: string
+      DeletedAt: components['schemas']['DeletedAt']
+      /** Format: int64 */
+      ID: number
+      /** Format: date-time */
+      UpdatedAt: string
+      code: string
+      /** Format: int64 */
+      price: number
+    }
+    ProductInputBody: {
+      /**
+       * Format: uri
+       * @description A URL to the JSON Schema for this object.
+       * @example https://example.com/schemas/ProductInputBody.json
+       */
+      readonly $schema?: string
+      /**
+       * @description Unique product code
+       * @example D42
+       */
+      code: string
+      /**
+       * Format: int64
+       * @description Product price
+       * @example 100
+       */
+      price: number
+    }
+    SignupRequest: {
+      /**
+       * Format: uri
+       * @description A URL to the JSON Schema for this object.
+       * @example https://example.com/schemas/SignupRequest.json
+       */
+      readonly $schema?: string
+      /** Format: email */
+      email: string
+      name: string
+      password: string
+    }
+    UpdateAdminSettingsInputBody: {
+      /**
+       * Format: uri
+       * @description A URL to the JSON Schema for this object.
+       * @example https://example.com/schemas/UpdateAdminSettingsInputBody.json
+       */
+      readonly $schema?: string
+      /** @description Enable or disable user registration */
+      registration_enabled?: boolean
+    }
+    UpdateProfileInputBody: {
+      /**
+       * Format: uri
+       * @description A URL to the JSON Schema for this object.
+       * @example https://example.com/schemas/UpdateProfileInputBody.json
+       */
+      readonly $schema?: string
+      /**
+       * Format: email
+       * @description New email address
+       */
+      email?: string
+      /** @description New display name */
+      name?: string
+    }
+    UpdateUserRoleInputBody: {
+      /**
+       * Format: uri
+       * @description A URL to the JSON Schema for this object.
+       * @example https://example.com/schemas/UpdateUserRoleInputBody.json
+       */
+      readonly $schema?: string
+      /**
+       * @description New role for the user
+       * @enum {string}
+       */
+      role: 'admin' | 'user'
+    }
+    UserInfo: {
+      /** Format: date-time */
+      created_at: string
+      email: string
+      /** Format: int64 */
+      id: number
+      name: string
+      role: string
+    }
+    UserOutputBody: {
+      /**
+       * Format: uri
+       * @description A URL to the JSON Schema for this object.
+       * @example https://example.com/schemas/UserOutputBody.json
+       */
+      readonly $schema?: string
+      email: string
+      /** @description Whether user has a password set (false for OIDC-only users) */
+      has_password: boolean
+      /** Format: int64 */
+      id: number
+      name: string
+      role: string
+    }
+    VersionOutputBody: {
+      /**
+       * Format: uri
+       * @description A URL to the JSON Schema for this object.
+       * @example https://example.com/schemas/VersionOutputBody.json
+       */
+      readonly $schema?: string
+      /**
+       * @description Time the binary was built
+       * @example 2026-01-16T02:30:47-05:00
+       */
+      build_time: string
+      /**
+       * @description Git commit hash
+       * @example abc123
+       */
+      commit: string
+      /**
+       * @description Self-hosted app version
+       * @example v0.1.0
+       */
+      version: string
+    }
+  }
+  responses: never
+  parameters: never
+  requestBodies: never
+  headers: never
+  pathItems: never
 }
-export type $defs = Record<string, never>;
+export type $defs = Record<string, never>
 export interface operations {
-    "get-admin-settings": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["AdminSettingsOutputBody"];
-                };
-            };
-            /** @description Error */
-            default: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/problem+json": components["schemas"]["ErrorModel"];
-                };
-            };
-        };
-    };
-    "update-admin-settings": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["UpdateAdminSettingsInputBody"];
-            };
-        };
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["AdminSettingsOutputBody"];
-                };
-            };
-            /** @description Error */
-            default: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/problem+json": components["schemas"]["ErrorModel"];
-                };
-            };
-        };
-    };
-    "list-users": {
-        parameters: {
-            query?: {
-                /** @description Search by email or name */
-                search?: string;
-                /** @description Maximum number of users to return */
-                limit?: number;
-                /** @description Offset for pagination */
-                offset?: number;
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ListUsersOutputBody"];
-                };
-            };
-            /** @description Error */
-            default: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/problem+json": components["schemas"]["ErrorModel"];
-                };
-            };
-        };
-    };
-    "update-user-role": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description User ID */
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["UpdateUserRoleInputBody"];
-            };
-        };
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["UserOutputBody"];
-                };
-            };
-            /** @description Error */
-            default: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/problem+json": components["schemas"]["ErrorModel"];
-                };
-            };
-        };
-    };
-    "delete-user": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description User ID */
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description No Content */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Error */
-            default: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/problem+json": components["schemas"]["ErrorModel"];
-                };
-            };
-        };
-    };
-    callback: {
-        parameters: {
-            query?: {
-                code?: string;
-                state?: string;
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["CallbackOutputBody"];
-                };
-            };
-            /** @description Error */
-            default: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/problem+json": components["schemas"]["ErrorModel"];
-                };
-            };
-        };
-    };
-    login: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description No Content */
-            204: {
-                headers: {
-                    Location?: string;
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Error */
-            default: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/problem+json": components["schemas"]["ErrorModel"];
-                };
-            };
-        };
-    };
-    "login-email": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["Login-emailRequest"];
-            };
-        };
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["CallbackOutputBody"];
-                };
-            };
-            /** @description Error */
-            default: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/problem+json": components["schemas"]["ErrorModel"];
-                };
-            };
-        };
-    };
-    signup: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["SignupRequest"];
-            };
-        };
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["CallbackOutputBody"];
-                };
-            };
-            /** @description Error */
-            default: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/problem+json": components["schemas"]["ErrorModel"];
-                };
-            };
-        };
-    };
-    "get-greeting-by-name": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /**
-                 * @description Name to greet
-                 * @example world
-                 */
-                name: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GreetingOutputBody"];
-                };
-            };
-            /** @description Error */
-            default: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/problem+json": components["schemas"]["ErrorModel"];
-                };
-            };
-        };
-    };
-    "get-health": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["HealthOutputBody"];
-                };
-            };
-            /** @description Error */
-            default: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/problem+json": components["schemas"]["ErrorModel"];
-                };
-            };
-        };
-    };
-    "list-api-keys": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ListKeysOutputBody"];
-                };
-            };
-            /** @description Error */
-            default: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/problem+json": components["schemas"]["ErrorModel"];
-                };
-            };
-        };
-    };
-    "create-api-key": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["CreateKeyInputBody"];
-            };
-        };
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["CreateKeyOutputBody"];
-                };
-            };
-            /** @description Error */
-            default: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/problem+json": components["schemas"]["ErrorModel"];
-                };
-            };
-        };
-    };
-    "revoke-api-key": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description No Content */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Error */
-            default: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/problem+json": components["schemas"]["ErrorModel"];
-                };
-            };
-        };
-    };
-    "get-current-user": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["UserOutputBody"];
-                };
-            };
-            /** @description Error */
-            default: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/problem+json": components["schemas"]["ErrorModel"];
-                };
-            };
-        };
-    };
-    "update-profile": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["UpdateProfileInputBody"];
-            };
-        };
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["UserOutputBody"];
-                };
-            };
-            /** @description Error */
-            default: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/problem+json": components["schemas"]["ErrorModel"];
-                };
-            };
-        };
-    };
-    "change-password": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["ChangePasswordInputBody"];
-            };
-        };
-        responses: {
-            /** @description No Content */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Error */
-            default: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/problem+json": components["schemas"]["ErrorModel"];
-                };
-            };
-        };
-    };
-    "list-products": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Product"][] | null;
-                };
-            };
-            /** @description Error */
-            default: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/problem+json": components["schemas"]["ErrorModel"];
-                };
-            };
-        };
-    };
-    "create-product": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["ProductInputBody"];
-            };
-        };
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Product"];
-                };
-            };
-            /** @description Error */
-            default: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/problem+json": components["schemas"]["ErrorModel"];
-                };
-            };
-        };
-    };
-    "get-products-by-id": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description Product ID */
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Product"];
-                };
-            };
-            /** @description Error */
-            default: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/problem+json": components["schemas"]["ErrorModel"];
-                };
-            };
-        };
-    };
-    "delete-product": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description Product ID */
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description No Content */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Error */
-            default: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/problem+json": components["schemas"]["ErrorModel"];
-                };
-            };
-        };
-    };
-    "get-version": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["VersionOutputBody"];
-                };
-            };
-            /** @description Error */
-            default: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/problem+json": components["schemas"]["ErrorModel"];
-                };
-            };
-        };
-    };
+  'get-admin-settings': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['AdminSettingsOutputBody']
+        }
+      }
+      /** @description Error */
+      default: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/problem+json': components['schemas']['ErrorModel']
+        }
+      }
+    }
+  }
+  'update-admin-settings': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['UpdateAdminSettingsInputBody']
+      }
+    }
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['AdminSettingsOutputBody']
+        }
+      }
+      /** @description Error */
+      default: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/problem+json': components['schemas']['ErrorModel']
+        }
+      }
+    }
+  }
+  'list-users': {
+    parameters: {
+      query?: {
+        /** @description Search by email or name */
+        search?: string
+        /** @description Maximum number of users to return */
+        limit?: number
+        /** @description Offset for pagination */
+        offset?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['ListUsersOutputBody']
+        }
+      }
+      /** @description Error */
+      default: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/problem+json': components['schemas']['ErrorModel']
+        }
+      }
+    }
+  }
+  'update-user-role': {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description User ID */
+        id: number
+      }
+      cookie?: never
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['UpdateUserRoleInputBody']
+      }
+    }
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['UserOutputBody']
+        }
+      }
+      /** @description Error */
+      default: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/problem+json': components['schemas']['ErrorModel']
+        }
+      }
+    }
+  }
+  'delete-user': {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description User ID */
+        id: number
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description No Content */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Error */
+      default: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/problem+json': components['schemas']['ErrorModel']
+        }
+      }
+    }
+  }
+  callback: {
+    parameters: {
+      query?: {
+        code?: string
+        state?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['CallbackOutputBody']
+        }
+      }
+      /** @description Error */
+      default: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/problem+json': components['schemas']['ErrorModel']
+        }
+      }
+    }
+  }
+  login: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description No Content */
+      204: {
+        headers: {
+          Location?: string
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Error */
+      default: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/problem+json': components['schemas']['ErrorModel']
+        }
+      }
+    }
+  }
+  'login-email': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['Login-emailRequest']
+      }
+    }
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['CallbackOutputBody']
+        }
+      }
+      /** @description Error */
+      default: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/problem+json': components['schemas']['ErrorModel']
+        }
+      }
+    }
+  }
+  signup: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['SignupRequest']
+      }
+    }
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['CallbackOutputBody']
+        }
+      }
+      /** @description Error */
+      default: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/problem+json': components['schemas']['ErrorModel']
+        }
+      }
+    }
+  }
+  'get-greeting-by-name': {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /**
+         * @description Name to greet
+         * @example world
+         */
+        name: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['GreetingOutputBody']
+        }
+      }
+      /** @description Error */
+      default: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/problem+json': components['schemas']['ErrorModel']
+        }
+      }
+    }
+  }
+  'get-health': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['HealthOutputBody']
+        }
+      }
+      /** @description Error */
+      default: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/problem+json': components['schemas']['ErrorModel']
+        }
+      }
+    }
+  }
+  'list-api-keys': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['ListKeysOutputBody']
+        }
+      }
+      /** @description Error */
+      default: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/problem+json': components['schemas']['ErrorModel']
+        }
+      }
+    }
+  }
+  'create-api-key': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['CreateKeyInputBody']
+      }
+    }
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['CreateKeyOutputBody']
+        }
+      }
+      /** @description Error */
+      default: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/problem+json': components['schemas']['ErrorModel']
+        }
+      }
+    }
+  }
+  'revoke-api-key': {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: number
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description No Content */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Error */
+      default: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/problem+json': components['schemas']['ErrorModel']
+        }
+      }
+    }
+  }
+  'get-current-user': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['UserOutputBody']
+        }
+      }
+      /** @description Error */
+      default: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/problem+json': components['schemas']['ErrorModel']
+        }
+      }
+    }
+  }
+  'update-profile': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['UpdateProfileInputBody']
+      }
+    }
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['UserOutputBody']
+        }
+      }
+      /** @description Error */
+      default: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/problem+json': components['schemas']['ErrorModel']
+        }
+      }
+    }
+  }
+  'change-password': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['ChangePasswordInputBody']
+      }
+    }
+    responses: {
+      /** @description No Content */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Error */
+      default: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/problem+json': components['schemas']['ErrorModel']
+        }
+      }
+    }
+  }
+  'list-products': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['Product'][] | null
+        }
+      }
+      /** @description Error */
+      default: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/problem+json': components['schemas']['ErrorModel']
+        }
+      }
+    }
+  }
+  'create-product': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['ProductInputBody']
+      }
+    }
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['Product']
+        }
+      }
+      /** @description Error */
+      default: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/problem+json': components['schemas']['ErrorModel']
+        }
+      }
+    }
+  }
+  'get-products-by-id': {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description Product ID */
+        id: number
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['Product']
+        }
+      }
+      /** @description Error */
+      default: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/problem+json': components['schemas']['ErrorModel']
+        }
+      }
+    }
+  }
+  'delete-product': {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description Product ID */
+        id: number
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description No Content */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Error */
+      default: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/problem+json': components['schemas']['ErrorModel']
+        }
+      }
+    }
+  }
+  'get-version': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['VersionOutputBody']
+        }
+      }
+      /** @description Error */
+      default: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/problem+json': components['schemas']['ErrorModel']
+        }
+      }
+    }
+  }
 }

@@ -44,7 +44,7 @@ type DropDrawerContextType = {
 const DropDrawerContext = React.createContext<DropDrawerContextType>({
   isMobile: false,
   isOpen: false,
-  setIsOpen: () => { },
+  setIsOpen: () => {},
 })
 
 const useDropDrawerContext = () => {
@@ -261,7 +261,11 @@ function DropDrawerItem({
         {...props}
       >
         <div className="flex items-center gap-2">{children}</div>
-        {icon && <div className="shrink-0" aria-hidden="true">{icon}</div>}
+        {icon && (
+          <div className="shrink-0" aria-hidden="true">
+            {icon}
+          </div>
+        )}
       </motion.div>
     )
 
