@@ -110,7 +110,7 @@ func TestAdminSettingsEndpoints(t *testing.T) {
 	db.Create(&normalUser)
 
 	// Register handlers with middleware
-	api.UseMiddleware(middleware.NewAuthMiddleware(db))
+	api.UseMiddleware(middleware.NewAuthMiddleware(api, db))
 	handlers.RegisterAdmin(api, db)
 
 	// Generate tokens
@@ -149,10 +149,38 @@ func TestAdminSettingsUnauthenticated(t *testing.T) {
 	_, api := humatest.New(t)
 
 	// Register handlers with middleware
-	api.UseMiddleware(middleware.NewAuthMiddleware(db))
+	api.UseMiddleware(middleware.NewAuthMiddleware(api, db))
 	handlers.RegisterAdmin(api, db)
 
 	// Test: Unauthenticated request should fail
 	resp := api.Get("/admin/settings")
 	assert.Equal(t, http.StatusUnauthorized, resp.Code)
+}
+
+func TestAdminSettingsZombieToken(t *testing.T) {
+	db := setupAdminTestDB(t)
+	_, api := humatest.New(t)
+
+	// Create a user and then delete it
+	user := database.User{
+		Email: "zombie@example.com",
+		Name:  "Zombie User",
+		Role:  database.RoleAdmin,
+	}
+	db.Create(&user)
+
+	// Generate token before deleting
+	token, _ := auth.GenerateJWT(user.ID)
+
+	// Delete the user from DB
+	db.Unscoped().Delete(&user)
+
+	// Register handlers with middleware
+	api.UseMiddleware(middleware.NewAuthMiddleware(api, db))
+	handlers.RegisterAdmin(api, db)
+
+	// Test: Request with valid JWT but missing user should fail with 401
+	resp := api.Get("/admin/settings", "Authorization: Bearer "+token)
+	assert.Equal(t, http.StatusUnauthorized, resp.Code)
+	assert.Contains(t, resp.Body.String(), "unauthorized: user not found")
 }

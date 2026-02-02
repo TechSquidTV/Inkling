@@ -155,7 +155,7 @@ func main() {
 		// Create a sub-router for /api so we can easily exclude it from the SPA catch-all
 		apiRouter := chi.NewRouter()
 		humaAPI = humachi.New(apiRouter, apiConfig)
-		humaAPI.UseMiddleware(appmiddleware.NewAuthMiddleware(db))
+		humaAPI.UseMiddleware(appmiddleware.NewAuthMiddleware(humaAPI, db))
 		api.RegisterHandlers(humaAPI, router, db, oidcProvider, logService)
 
 		router.Mount("/api", apiRouter)

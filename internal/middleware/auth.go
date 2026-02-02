@@ -2,6 +2,7 @@ package middleware
 
 import (
 	"context"
+	"net/http"
 	"strings"
 
 	"github.com/danielgtaylor/huma/v2"
@@ -13,7 +14,7 @@ import (
 type UserContextKey struct{}
 
 // NewAuthMiddleware creates a new authentication middleware.
-func NewAuthMiddleware(db *gorm.DB) func(huma.Context, func(huma.Context)) {
+func NewAuthMiddleware(api huma.API, db *gorm.DB) func(huma.Context, func(huma.Context)) {
 	return func(ctx huma.Context, next func(huma.Context)) {
 		var user *database.User
 
@@ -26,6 +27,10 @@ func NewAuthMiddleware(db *gorm.DB) func(huma.Context, func(huma.Context)) {
 				// Key found, get user
 				if err := db.First(&user, keyRecord.UserID).Error; err == nil {
 					// User found
+				} else {
+					// Key valid, but user not found (deleted)
+					huma.WriteErr(api, ctx, http.StatusUnauthorized, "unauthorized: user not found")
+					return
 				}
 			}
 		}
@@ -39,6 +44,10 @@ func NewAuthMiddleware(db *gorm.DB) func(huma.Context, func(huma.Context)) {
 				if err == nil {
 					if err := db.First(&user, claims.UserID).Error; err == nil {
 						// User found
+					} else {
+						// Token valid, but user not found (deleted)
+						huma.WriteErr(api, ctx, http.StatusUnauthorized, "unauthorized: user not found")
+						return
 					}
 				}
 			}

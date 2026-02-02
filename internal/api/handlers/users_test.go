@@ -36,7 +36,7 @@ func TestListUsers(t *testing.T) {
 	db.Create(&database.User{Email: "user2@example.com", Name: "User Two", Role: database.RoleUser})
 
 	// Register handlers
-	api.UseMiddleware(middleware.NewAuthMiddleware(db))
+	api.UseMiddleware(middleware.NewAuthMiddleware(api, db))
 	handlers.RegisterUsers(api, db)
 
 	// Generate admin token
@@ -60,7 +60,7 @@ func TestListUsersUnauthorized(t *testing.T) {
 	db.Create(&user)
 
 	// Register handlers
-	api.UseMiddleware(middleware.NewAuthMiddleware(db))
+	api.UseMiddleware(middleware.NewAuthMiddleware(api, db))
 	handlers.RegisterUsers(api, db)
 
 	// Generate user token
@@ -82,7 +82,7 @@ func TestUpdateUserRole(t *testing.T) {
 	db.Create(&user)
 
 	// Register handlers
-	api.UseMiddleware(middleware.NewAuthMiddleware(db))
+	api.UseMiddleware(middleware.NewAuthMiddleware(api, db))
 	handlers.RegisterUsers(api, db)
 
 	// Generate admin token
@@ -117,7 +117,7 @@ func TestCannotDemoteLastAdmin(t *testing.T) {
 	db.Create(&admin2)
 
 	// Register handlers
-	api.UseMiddleware(middleware.NewAuthMiddleware(db))
+	api.UseMiddleware(middleware.NewAuthMiddleware(api, db))
 	handlers.RegisterUsers(api, db)
 
 	// Generate admin2 token
@@ -148,7 +148,7 @@ func TestDeleteUser(t *testing.T) {
 	db.Create(&user)
 
 	// Register handlers
-	api.UseMiddleware(middleware.NewAuthMiddleware(db))
+	api.UseMiddleware(middleware.NewAuthMiddleware(api, db))
 	handlers.RegisterUsers(api, db)
 
 	// Generate admin token
@@ -173,7 +173,7 @@ func TestCannotDeleteSelf(t *testing.T) {
 	db.Create(&admin)
 
 	// Register handlers
-	api.UseMiddleware(middleware.NewAuthMiddleware(db))
+	api.UseMiddleware(middleware.NewAuthMiddleware(api, db))
 	handlers.RegisterUsers(api, db)
 
 	// Generate admin token
@@ -195,7 +195,7 @@ func TestCannotDeleteLastAdmin(t *testing.T) {
 	db.Create(&admin2)
 
 	// Register handlers
-	api.UseMiddleware(middleware.NewAuthMiddleware(db))
+	api.UseMiddleware(middleware.NewAuthMiddleware(api, db))
 	handlers.RegisterUsers(api, db)
 
 	// Generate admin1 token
