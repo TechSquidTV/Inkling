@@ -14,14 +14,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (!token) return
 
     try {
-      const { data, error } = await client.GET('/me', {
+      const { data, error, response } = await client.GET('/me', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
 
-      if (error) {
-        throw new Error(error.detail || 'Failed to fetch user')
+      if (error || !response.ok) {
+        // If the token is invalid or user doesn't exist, we must log out
+        // This ensures strict sync between token validity and user existence
+        logger.warn('failed to fetch user context, logging out', {
+          status: response.status,
+          error,
+        })
+        logout()
+        return
       }
 
       if (data) {
@@ -38,7 +45,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
     } catch (err) {
       logger.error('failed to fetch user info', { error: err })
-      setUser(null)
+      // If we completely fail to execute the request, we should probably logout too
+      // to avoid stuck states, but let's be careful about network errors vs auth errors.
+      // For now, let's assume if we can't verify the user, we aren't authenticated.
+      logout()
     }
   }, [token])
 
