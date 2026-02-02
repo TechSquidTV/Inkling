@@ -57,16 +57,18 @@ export function ConfirmPasswordField({
         onChange={(e) => field.handleChange(e.target.value)}
         placeholder={placeholder}
         aria-invalid={isInvalid}
+        aria-describedby={isInvalid ? `${field.name}-error` : undefined}
+        autoComplete="new-password"
+        required
       />
       <div className="min-h-5 py-0.5">
         {isInvalid ? (
-          <FieldError errors={field.state.meta.errors} />
+          <FieldError id={`${field.name}-error`} errors={field.state.meta.errors} />
         ) : (
           showMatchStatus && (
             <p
-              className={`text-xs font-medium ${
-                passwordsMatch ? 'text-success' : 'text-destructive'
-              }`}
+              className={`text-xs font-medium ${passwordsMatch ? 'text-success' : 'text-destructive'
+                }`}
             >
               {passwordsMatch
                 ? '✓ Passwords match'

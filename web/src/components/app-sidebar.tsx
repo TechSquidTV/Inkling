@@ -110,15 +110,18 @@ function VersionIndicator() {
     fetch('/api/version')
       .then((res) => res.json())
       .then((data) => setVersion(data))
-      .catch(() => {})
+      .catch(() => { })
   }, [])
 
   if (!version) return null
 
   return (
-    <div className="flex items-center justify-between text-[10px] font-medium tracking-wider uppercase">
+    <small
+      aria-label="App version info"
+      className="flex items-center justify-between text-[10px] font-medium tracking-wider uppercase"
+    >
       <span>{version.version}</span>
       <span className="font-mono">{version.commit}</span>
-    </div>
+    </small>
   )
 }

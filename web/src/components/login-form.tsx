@@ -102,9 +102,17 @@ export function LoginForm({
                         onChange={(e) => field.handleChange(e.target.value)}
                         placeholder="you@example.com"
                         aria-invalid={isInvalid}
+                        aria-describedby={
+                          isInvalid ? `${field.name}-error` : undefined
+                        }
+                        autoComplete="username"
+                        required
                       />
                       {isInvalid && (
-                        <FieldError errors={field.state.meta.errors} />
+                        <FieldError
+                          id={`${field.name}-error`}
+                          errors={field.state.meta.errors}
+                        />
                       )}
                     </Field>
                   )
@@ -127,9 +135,17 @@ export function LoginForm({
                         onBlur={field.handleBlur}
                         onChange={(e) => field.handleChange(e.target.value)}
                         aria-invalid={isInvalid}
+                        aria-describedby={
+                          isInvalid ? `${field.name}-error` : undefined
+                        }
+                        autoComplete="current-password"
+                        required
                       />
                       {isInvalid && (
-                        <FieldError errors={field.state.meta.errors} />
+                        <FieldError
+                          id={`${field.name}-error`}
+                          errors={field.state.meta.errors}
+                        />
                       )}
                     </Field>
                   )

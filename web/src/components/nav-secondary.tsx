@@ -40,12 +40,12 @@ export function NavSecondary({
                         item.url.startsWith('http') ? 'noreferrer' : undefined
                       }
                     >
-                      <item.icon />
+                      <item.icon aria-hidden="true" />
                       <span>{item.title}</span>
                     </a>
                   ) : (
                     <Link to={item.url}>
-                      <item.icon />
+                      <item.icon aria-hidden="true" />
                       <span>{item.title}</span>
                     </Link>
                   )}

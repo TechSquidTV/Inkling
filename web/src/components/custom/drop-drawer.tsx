@@ -44,7 +44,7 @@ type DropDrawerContextType = {
 const DropDrawerContext = React.createContext<DropDrawerContextType>({
   isMobile: false,
   isOpen: false,
-  setIsOpen: () => {},
+  setIsOpen: () => { },
 })
 
 const useDropDrawerContext = () => {
@@ -246,6 +246,7 @@ function DropDrawerItem({
         data-inset={inset}
         data-disabled={disabled}
         whileTap={{ scale: 0.98 }}
+        role="menuitem"
         className={cn(
           'active:bg-sidebar-accent flex cursor-pointer items-center justify-between px-6 py-4 transition-colors',
           !isInsideGroup && 'border-b last:border-0',
@@ -260,7 +261,7 @@ function DropDrawerItem({
         {...props}
       >
         <div className="flex items-center gap-2">{children}</div>
-        {icon && <div className="shrink-0">{icon}</div>}
+        {icon && <div className="shrink-0" aria-hidden="true">{icon}</div>}
       </motion.div>
     )
 
@@ -283,7 +284,7 @@ function DropDrawerItem({
     >
       <div className="flex w-full items-center justify-between">
         <div className="flex items-center gap-2">{children}</div>
-        {icon && <div>{icon}</div>}
+        {icon && <div aria-hidden="true">{icon}</div>}
       </div>
     </DropdownMenuItem>
   )
@@ -315,7 +316,7 @@ function DropDrawerCheckboxItem({
         {...(props as React.HTMLAttributes<HTMLDivElement>)}
       >
         <div className="flex items-center gap-2">{children}</div>
-        {checked && <Check className="h-4 w-4" />}
+        {checked && <Check aria-hidden="true" className="h-4 w-4" />}
       </div>
     )
   }

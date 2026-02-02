@@ -113,9 +113,17 @@ export function SignUpForm({
                         onChange={(e) => field.handleChange(e.target.value)}
                         placeholder="Your name"
                         aria-invalid={isInvalid}
+                        aria-describedby={
+                          isInvalid ? `${field.name}-error` : undefined
+                        }
+                        autoComplete="name"
+                        required
                       />
                       {isInvalid && (
-                        <FieldError errors={field.state.meta.errors} />
+                        <FieldError
+                          id={`${field.name}-error`}
+                          errors={field.state.meta.errors}
+                        />
                       )}
                     </Field>
                   )
@@ -139,9 +147,17 @@ export function SignUpForm({
                         onChange={(e) => field.handleChange(e.target.value)}
                         placeholder="you@example.com"
                         aria-invalid={isInvalid}
+                        aria-describedby={
+                          isInvalid ? `${field.name}-error` : undefined
+                        }
+                        autoComplete="email"
+                        required
                       />
                       {isInvalid && (
-                        <FieldError errors={field.state.meta.errors} />
+                        <FieldError
+                          id={`${field.name}-error`}
+                          errors={field.state.meta.errors}
+                        />
                       )}
                     </Field>
                   )
@@ -163,11 +179,19 @@ export function SignUpForm({
                         onBlur={field.handleBlur}
                         onChange={(e) => field.handleChange(e.target.value)}
                         aria-invalid={isInvalid}
+                        aria-describedby={
+                          isInvalid ? `${field.name}-error` : undefined
+                        }
+                        autoComplete="new-password"
+                        required
                       />
                       <PasswordStrengthIndicator password={field.state.value} />
                       <div className="min-h-5 py-0.5">
                         {isInvalid && (
-                          <FieldError errors={field.state.meta.errors} />
+                          <FieldError
+                            id={`${field.name}-error`}
+                            errors={field.state.meta.errors}
+                          />
                         )}
                       </div>
                     </Field>

@@ -40,7 +40,7 @@ export function NavMain({
               tooltip="Quick Create"
               className="bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground min-w-8 duration-200 ease-linear"
             >
-              <IconCirclePlusFilled />
+              <IconCirclePlusFilled aria-hidden="true" />
               <span>Quick Create</span>
             </SidebarMenuButton>
             <AlertDialog>
@@ -50,7 +50,7 @@ export function NavMain({
                   className="size-8 group-data-[collapsible=icon]:opacity-0"
                   variant="outline"
                 >
-                  <IconMail />
+                  <IconMail aria-hidden="true" />
                   <span className="sr-only">Inbox</span>
                 </Button>
               </AlertDialogTrigger>
@@ -82,7 +82,7 @@ export function NavMain({
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton tooltip={item.title} asChild>
                 <Link to={item.url}>
-                  {item.icon && <item.icon />}
+                  {item.icon && <item.icon aria-hidden="true" />}
                   <span>{item.title}</span>
                 </Link>
               </SidebarMenuButton>

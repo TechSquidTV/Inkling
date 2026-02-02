@@ -59,7 +59,7 @@ export function NavUser({ user, onLogout }: NavUserProps) {
                   {user.email}
                 </span>
               </div>
-              <IconDotsVertical className="ml-auto size-4" />
+              <IconDotsVertical aria-hidden="true" className="ml-auto size-4" />
             </SidebarMenuButton>
           </DropDrawerTrigger>
           <DropDrawerContent className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg">
@@ -82,13 +82,13 @@ export function NavUser({ user, onLogout }: NavUserProps) {
             <DropDrawerSeparator />
             <DropDrawerGroup>
               <DropDrawerItem onSelect={() => navigate({ to: '/settings' })}>
-                <IconSettings />
+                <IconSettings aria-hidden="true" />
                 Settings
               </DropDrawerItem>
             </DropDrawerGroup>
             <DropDrawerSeparator />
             <DropDrawerItem onSelect={onLogout}>
-              <IconLogout />
+              <IconLogout aria-hidden="true" />
               Log out
             </DropDrawerItem>
           </DropDrawerContent>
