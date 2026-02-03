@@ -26,11 +26,12 @@ const signupSchema = z
     name: z.string().min(2, 'Name must be at least 2 characters'),
     email: z.string().email('Invalid email address'),
     password: z.string().min(8, 'Password must be at least 8 characters'),
-    confirmPassword: z.string(),
+    password: z.string().min(8, 'Password must be at least 8 characters'),
+    confirm_password: z.string(),
   })
-  .refine((data) => data.password === data.confirmPassword, {
+  .refine((data) => data.password === data.confirm_password, {
     message: 'Passwords do not match',
-    path: ['confirmPassword'],
+    path: ['confirm_password'],
   })
 
 export function SignUpForm({
@@ -44,7 +45,8 @@ export function SignUpForm({
       name: '',
       email: '',
       password: '',
-      confirmPassword: '',
+      password: '',
+      confirm_password: '',
     },
     validators: {
       onChange: signupSchema,
@@ -202,15 +204,17 @@ export function SignUpForm({
               <form.Subscribe
                 selector={(state) => state.values.password}
                 children={(password) => (
-                  <form.Field
-                    name="confirmPassword"
-                    children={(field) => (
-                      <ConfirmPasswordField
-                        field={field}
-                        valueToMatch={password}
-                      />
-                    )}
+                  children = {(password) => (
+              <form.Field
+                name="confirm_password"
+                children={(field) => (
+                  <ConfirmPasswordField
+                    field={field}
+                    valueToMatch={password}
                   />
+                )}
+              />
+                )}
                 )}
               />
 
