@@ -10,6 +10,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   )
   const [user, setUser] = useState<User | null>(null)
 
+  const logout = useCallback(() => {
+    localStorage.removeItem('token')
+    setToken(null)
+    setUser(null)
+    logger.info('User session ended')
+    toast.success('Signed out successfully')
+  }, [])
+
   const fetchUser = useCallback(async () => {
     if (!token) return
 
@@ -50,20 +58,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       // For now, let's assume if we can't verify the user, we aren't authenticated.
       logout()
     }
-  }, [token])
+  }, [token, logout])
 
   const login = useCallback((newToken: string) => {
     localStorage.setItem('token', newToken)
     setToken(newToken)
     logger.info('User session started')
-  }, [])
-
-  const logout = useCallback(() => {
-    localStorage.removeItem('token')
-    setToken(null)
-    setUser(null)
-    logger.info('User session ended')
-    toast.success('Signed out successfully')
   }, [])
 
   const refreshUser = useCallback(async () => {
@@ -84,6 +84,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   // Fetch user info when token changes
   useEffect(() => {
     if (token) {
+      // eslint-disable-next-line
       fetchUser()
     }
   }, [token, fetchUser])

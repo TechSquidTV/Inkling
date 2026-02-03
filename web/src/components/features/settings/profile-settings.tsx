@@ -21,9 +21,9 @@ import {
   FieldLabel,
   FieldError,
 } from '@/components/ui/field'
-import { PasswordInput } from '@/components/password-input'
-import { PasswordStrengthIndicator } from '@/components/password-strength-indicator'
-import { ConfirmPasswordField } from '@/components/confirm-password-field'
+import { PasswordInput } from '@/components/auth/password-input'
+import { PasswordStrengthIndicator } from '@/components/auth/password-strength-indicator'
+import { ConfirmPasswordField } from '@/components/auth/confirm-password-field'
 
 const profileSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),

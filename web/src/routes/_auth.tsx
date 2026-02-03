@@ -1,6 +1,6 @@
-import { AppSidebar } from '@/components/app-sidebar'
+import { AppSidebar } from '@/components/layout/app-sidebar'
 import { SidebarInset, SidebarProvider } from '@/components/custom/sidebar'
-import { SiteHeader } from '@/components/site-header'
+import { SiteHeader } from '@/components/layout/site-header'
 import { createFileRoute, Outlet, redirect } from '@tanstack/react-router'
 import type { CSSProperties } from 'react'
 

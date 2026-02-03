@@ -18,9 +18,9 @@ import {
   DropDrawerLabel,
 } from '@/components/custom/drop-drawer'
 
-import { type DataTableItem } from '@/components/custom/data-table/schema'
-import { DragHandle } from '@/components/custom/data-table/draggable-row'
-import { TableCellViewer } from '@/components/custom/data-table/table-cell-viewer'
+import { type DataTableItem } from '@/components/common/data-table/schema'
+import { DragHandle } from '@/components/common/data-table/draggable-row'
+import { TableCellViewer } from '@/components/common/data-table/table-cell-viewer'
 
 // Module augmentation for TableMeta
 declare module '@tanstack/react-table' {

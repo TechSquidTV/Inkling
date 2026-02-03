@@ -50,5 +50,8 @@ Always use the `asChild` prop from Radix UI when composing animation wrappers wi
 
 - `web/src/components/ui/`: Standard shadcn/ui primitives.
 - `web/src/components/animate-ui/`: High-performance animated versions of primitives.
-- `web/src/components/custom/`: Complex, multi-part component systems (e.g., Sidebar, DataTable sub-parts).
-- `web/src/components/`: Specific app implementations (e.g., `NavUser`, `LoginForm`).
+- `web/src/components/auth/`: Authentication forms and providers.
+- `web/src/components/layout/`: Structural and navigation components.
+- `web/src/components/features/`: Domain-specific component groups (e.g., `logs`, `dashboard`, `settings`).
+- `web/src/components/common/`: Shared reusable components (e.g., `icons`, `data-table`, `status-dot`).
+- `web/src/components/custom/`: Complex tailored components (e.g., specific `Sidebar` implementation).

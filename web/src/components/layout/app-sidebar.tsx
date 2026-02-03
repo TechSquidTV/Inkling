@@ -1,6 +1,6 @@
 import { useCallback, useState, useEffect } from 'react'
 import { Link, useNavigate } from '@tanstack/react-router'
-import { AppLogo } from '@/components/app-logo'
+import { AppLogo } from '@/components/layout/app-logo'
 import {
   IconDashboard,
   IconHelp,
@@ -8,9 +8,9 @@ import {
   IconTerminal,
 } from '@tabler/icons-react'
 
-import { NavMain } from '@/components/nav-main'
-import { NavSecondary } from '@/components/nav-secondary'
-import { NavUser } from '@/components/nav-user'
+import { NavMain } from '@/components/layout/nav-main'
+import { NavSecondary } from '@/components/layout/nav-secondary'
+import { NavUser } from '@/components/layout/nav-user'
 import {
   Sidebar,
   SidebarContent,

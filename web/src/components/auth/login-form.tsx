@@ -14,7 +14,7 @@ import {
   FieldSeparator,
 } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
-import { AuthBrandImage } from '@/components/auth-brand-image'
+import { AuthBrandImage } from '@/components/auth/auth-brand-image'
 import { APP_CONFIG } from '@/constants'
 import { Link, useNavigate, useSearch } from '@tanstack/react-router'
 import { client } from '@/lib/api'

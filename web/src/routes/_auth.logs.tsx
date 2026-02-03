@@ -1,8 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { AnsiLogViewer } from '@/components/ansi-log-viewer'
-import { LogStatusIndicator } from '@/components/log-status-indicator'
+import { AnsiLogViewer } from '@/components/features/logs/ansi-log-viewer'
+import { LogStatusIndicator } from '@/components/features/logs/log-status-indicator'
 import { useLogStream } from '@/hooks/use-log-stream'
-import { DashboardLayout } from '@/components/dashboard-layout'
+import { DashboardLayout } from '@/components/layout/dashboard-layout'
 import {
   Tabs,
   TabsList,

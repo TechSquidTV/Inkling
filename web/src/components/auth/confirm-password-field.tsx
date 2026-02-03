@@ -1,6 +1,6 @@
 import { FieldApi } from '@tanstack/react-form'
 import { Field, FieldLabel, FieldError } from '@/components/ui/field'
-import { PasswordInput } from '@/components/password-input'
+import { PasswordInput } from '@/components/auth/password-input'
 
 interface ConfirmPasswordFieldProps {
   /* eslint-disable @typescript-eslint/no-explicit-any */

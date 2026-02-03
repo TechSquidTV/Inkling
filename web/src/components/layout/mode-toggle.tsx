@@ -8,7 +8,7 @@ import {
   DropDrawerSeparator,
   DropDrawerTrigger,
 } from '@/components/custom/drop-drawer'
-import { useTheme } from '@/components/theme-provider'
+import { useTheme } from '@/components/common/theme-provider'
 import { Sun, Moon, Laptop } from 'lucide-react'
 
 export function ModeToggle() {

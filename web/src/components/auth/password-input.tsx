@@ -3,8 +3,8 @@
 import { forwardRef, useState } from 'react'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { EyeIcon } from '@/components/icons/eye-icon'
-import { EyeOffIcon } from '@/components/icons/eye-off-icon'
+import { EyeIcon } from '@/components/common/icons/eye-icon'
+import { EyeOffIcon } from '@/components/common/icons/eye-off-icon'
 import { cn } from '@/lib/utils'
 
 export type PasswordInputProps = Omit<

@@ -30,7 +30,7 @@ import {
 } from '@dnd-kit/core'
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers'
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
-import { DraggableRow } from '@/components/custom/data-table/draggable-row'
+import { DraggableRow } from '@/components/common/data-table/draggable-row'
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]

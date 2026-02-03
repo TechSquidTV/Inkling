@@ -1,7 +1,7 @@
-import { ChartAreaInteractive } from '@/components/chart-area-interactive'
+import { ChartAreaInteractive } from '@/components/features/dashboard/chart-area-interactive'
 import { DataTable } from '@/components/ui/data-table'
-import { SectionCards } from '@/components/section-cards'
-import { DashboardLayout } from '@/components/dashboard-layout'
+import { SectionCards } from '@/components/features/dashboard/section-cards'
+import { DashboardLayout } from '@/components/layout/dashboard-layout'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import {

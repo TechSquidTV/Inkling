@@ -13,20 +13,20 @@ import {
   FieldError,
 } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
-import { PasswordInput } from '@/components/password-input'
-import { PasswordStrengthIndicator } from '@/components/password-strength-indicator'
-import { AuthBrandImage } from '@/components/auth-brand-image'
+import { PasswordInput } from '@/components/auth/password-input'
+import { PasswordStrengthIndicator } from '@/components/auth/password-strength-indicator'
+import { AuthBrandImage } from '@/components/auth/auth-brand-image'
 import { APP_CONFIG } from '@/constants'
 import { Link, useNavigate } from '@tanstack/react-router'
 import { client } from '@/lib/api'
-import { ConfirmPasswordField } from '@/components/confirm-password-field'
+import { ConfirmPasswordField } from '@/components/auth/confirm-password-field'
 
 const signupSchema = z
   .object({
     name: z.string().min(2, 'Name must be at least 2 characters'),
     email: z.string().email('Invalid email address'),
     password: z.string().min(8, 'Password must be at least 8 characters'),
-    password: z.string().min(8, 'Password must be at least 8 characters'),
+
     confirm_password: z.string(),
   })
   .refine((data) => data.password === data.confirm_password, {
@@ -45,7 +45,7 @@ export function SignUpForm({
       name: '',
       email: '',
       password: '',
-      password: '',
+
       confirm_password: '',
     },
     validators: {
@@ -204,17 +204,15 @@ export function SignUpForm({
               <form.Subscribe
                 selector={(state) => state.values.password}
                 children={(password) => (
-                  children = {(password) => (
-              <form.Field
-                name="confirm_password"
-                children={(field) => (
-                  <ConfirmPasswordField
-                    field={field}
-                    valueToMatch={password}
+                  <form.Field
+                    name="confirm_password"
+                    children={(field) => (
+                      <ConfirmPasswordField
+                        field={field}
+                        valueToMatch={password}
+                      />
+                    )}
                   />
-                )}
-              />
-                )}
                 )}
               />
 

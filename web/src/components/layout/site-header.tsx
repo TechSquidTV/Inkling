@@ -2,8 +2,8 @@ import { Button } from '@/components/ui/button'
 import { APP_CONFIG } from '@/constants'
 import { Separator } from '@/components/ui/separator'
 import { SidebarTrigger } from '@/components/custom/sidebar'
-import { ModeToggle } from '@/components/mode-toggle'
-import { NavBreadcrumbs } from '@/components/nav-breadcrumbs'
+import { ModeToggle } from '@/components/layout/mode-toggle'
+import { NavBreadcrumbs } from '@/components/layout/nav-breadcrumbs'
 
 export function SiteHeader() {
   return (

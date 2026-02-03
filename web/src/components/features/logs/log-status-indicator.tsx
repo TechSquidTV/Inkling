@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils'
-import type { StatusDotProps } from './status-dot'
-import { StatusDot } from './status-dot'
+import type { StatusDotProps } from '@/components/common/status-dot'
+import { StatusDot } from '@/components/common/status-dot'
 
 type ConnectionStatus = 'connected' | 'connecting' | 'disconnected'
 

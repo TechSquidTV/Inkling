@@ -39,10 +39,12 @@ web/src/
 ├── assets/          # Static assets (images, fonts)
 ├── components/      # React components
 │   ├── animate-ui/  # Custom high-fidelity animated components
-│   ├── custom/      # Application-specific business components
 │   ├── ui/          # Reusable foundational UI components (Shadcn)
-│   ├── settings/    # Settings-specific components
-│   └── ...          # Other layout components (nav, headers)
+│   ├── auth/        # Authentication related components
+│   ├── common/      # Shared utilities and components
+│   ├── features/    # Feature-specific components (logs, dashboard, settings)
+│   ├── layout/      # Application shell and navigation
+│   └── custom/      # Complex unique component systems
 ├── hooks/           # Custom React hooks
 ├── lib/             # Shared utilities
 │   ├── api.ts       # API client configuration
